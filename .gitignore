@@ -39,3 +39,6 @@ resources
 !.dev.vars.example
 .env*
 !.env.example
+
+# Angular cache
+.angular/
