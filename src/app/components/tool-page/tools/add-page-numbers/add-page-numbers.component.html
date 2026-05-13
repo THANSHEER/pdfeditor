@@ -1,0 +1,116 @@
+<app-tool-page
+  title="Add Page Numbers"
+  description="Insert page numbers into every page of your PDF. Choose position, format and starting number."
+  icon="type"
+  iconBg="rgba(16, 185, 129, 0.1)"
+  iconColor="#10b981"
+  [allowMultiple]="false"
+  actionLabel="Add Page Numbers"
+  actionIcon="type"
+  [isProcessing]="isProcessing"
+  [errorMessage]="errorMessage"
+  [selectedFiles]="files"
+  [downloadFiles]="downloads"
+  (filesChanged)="onFilesChanged($event)"
+  (process)="onProcess()"
+>
+  <div slot="settings" class="flex flex-col gap-5">
+
+    <!-- Position picker — 3×2 grid -->
+    <div class="flex flex-col gap-2">
+      <label class="text-sm font-bold" style="color: var(--text-main);">Position</label>
+      <div class="grid grid-cols-3 gap-2">
+        @for (pos of positions; track pos.id) {
+          <button
+            type="button"
+            (click)="position = pos.id"
+            class="py-2 px-2 rounded-xl border-2 text-xs font-semibold transition-all"
+            [class.border-emerald-500]="position === pos.id"
+            [class.text-emerald-600]="position === pos.id"
+            [style.backgroundColor]="position === pos.id ? 'rgba(16,185,129,0.08)' : 'var(--bg-card)'"
+            [style.borderColor]="position !== pos.id ? 'var(--border-main)' : ''"
+            [style.color]="position !== pos.id ? 'var(--text-muted)' : ''"
+          >
+            {{ pos.label }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Format row: prefix / start / suffix -->
+    <div class="flex flex-col gap-2">
+      <label class="text-sm font-bold" style="color: var(--text-main);">Number Format</label>
+      <div class="grid grid-cols-3 gap-2 items-center">
+        <div class="flex flex-col gap-1">
+          <span class="text-xs font-medium opacity-60" style="color: var(--text-muted);">Prefix</span>
+          <input
+            type="text"
+            [(ngModel)]="prefix"
+            placeholder="Page "
+            class="px-3 py-2 rounded-lg border text-sm transition-colors focus:outline-none focus:border-emerald-500"
+            style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);"
+          />
+        </div>
+        <div class="flex flex-col gap-1">
+          <span class="text-xs font-medium opacity-60" style="color: var(--text-muted);">Start #</span>
+          <input
+            type="number"
+            [(ngModel)]="startNumber"
+            min="0"
+            class="px-3 py-2 rounded-lg border text-sm transition-colors focus:outline-none focus:border-emerald-500"
+            style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);"
+          />
+        </div>
+        <div class="flex flex-col gap-1">
+          <span class="text-xs font-medium opacity-60" style="color: var(--text-muted);">Suffix</span>
+          <input
+            type="text"
+            [(ngModel)]="suffix"
+            placeholder=" of N"
+            class="px-3 py-2 rounded-lg border text-sm transition-colors focus:outline-none focus:border-emerald-500"
+            style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Font size + margin row -->
+    <div class="grid grid-cols-2 gap-4">
+      <div class="flex flex-col gap-2">
+        <label class="text-sm font-bold" style="color: var(--text-main);">Font Size <span class="font-normal opacity-60">(pt)</span></label>
+        <input
+          type="number"
+          [(ngModel)]="fontSize"
+          min="6" max="36"
+          class="px-4 py-3 rounded-xl border text-sm transition-colors focus:outline-none focus:border-emerald-500"
+          style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);"
+        />
+      </div>
+      <div class="flex flex-col gap-2">
+        <label class="text-sm font-bold" style="color: var(--text-main);">Margin <span class="font-normal opacity-60">(pt)</span></label>
+        <input
+          type="number"
+          [(ngModel)]="marginPt"
+          min="4" max="100"
+          class="px-4 py-3 rounded-xl border text-sm transition-colors focus:outline-none focus:border-emerald-500"
+          style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);"
+        />
+      </div>
+    </div>
+
+    <!-- Live preview badge -->
+    <div
+      class="flex items-center gap-3 rounded-xl border px-4 py-3"
+      style="border-color: var(--border-main); background-color: var(--bg-surface);"
+    >
+      <svg class="w-4 h-4 opacity-50 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-muted);">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+      </svg>
+      <span class="text-sm" style="color: var(--text-muted);">
+        Preview: <strong style="color: var(--text-main);">{{ preview }}</strong>
+        &nbsp;·&nbsp; {{ position.replace('-', ' ') }}
+      </span>
+    </div>
+
+  </div>
+</app-tool-page>

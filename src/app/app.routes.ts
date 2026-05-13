@@ -89,6 +89,28 @@ export const routes: Routes = [
       ),
   },
 
+  {
+    path: 'tools/add-watermark',
+    loadComponent: () =>
+      import('./components/tool-page/tools/add-watermark/add-watermark.component').then(
+        (m) => m.AddWatermarkComponent,
+      ),
+  },
+  {
+    path: 'tools/add-page-numbers',
+    loadComponent: () =>
+      import('./components/tool-page/tools/add-page-numbers/add-page-numbers.component').then(
+        (m) => m.AddPageNumbersComponent,
+      ),
+  },
+  {
+    path: 'tools/crop-pdf',
+    loadComponent: () =>
+      import('./components/tool-page/tools/crop-pdf/crop-pdf.component').then(
+        (m) => m.CropPdfComponent,
+      ),
+  },
+
   // ─── Unified PDF Editor Workspace ─────────────────────────────────────────────
   {
     path: "tools/editor/:tool",
