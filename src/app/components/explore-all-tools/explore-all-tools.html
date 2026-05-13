@@ -7,34 +7,9 @@
         filter by category, and open the exact tool you need.
       </p>
     </div>
-
-    <div class="tools-hero-panel surface-panel animate-fade-up">
-      <div class="tools-stat">
-        <strong>{{ tools.length }}</strong>
-        <span>Total tools</span>
-      </div>
-      <div class="tools-stat">
-        <strong>{{ readyToolsCount }}</strong>
-        <span>Ready now</span>
-      </div>
-      <div class="tools-stat">
-        <strong>{{ categories.length }}</strong>
-        <span>Categories</span>
-      </div>
-    </div>
   </section>
 
-  <section class="tools-control-shell surface-panel" aria-label="Tool search and filters">
-    <div class="tools-control-header">
-      <div>
-        <span class="tools-control-kicker">Explore</span>
-        <h2>{{ selectedCategoryName }}</h2>
-      </div>
-      <span class="tools-result-count">
-        {{ filteredTools.length }} result{{ filteredTools.length !== 1 ? 's' : '' }}
-      </span>
-    </div>
-
+  <section class="tools-search-shell surface-panel" aria-label="Tool search">
     <app-search-bar [value]="searchQuery" (search)="onSearch($event)"></app-search-bar>
   </section>
 

@@ -31,21 +31,12 @@ export class ExploreAllToolsComponent implements OnInit {
 
   get filteredTools(): Tool[] {
     if (!this.searchQuery) return this.tools;
-    
+
     return this.tools.filter(tool =>
       tool.name.toLowerCase().includes(this.searchQuery) ||
       tool.keywords.some(k => k.toLowerCase().includes(this.searchQuery)) ||
       tool.tags.some(t => t.toLowerCase().includes(this.searchQuery))
     );
-  }
-
-  get readyToolsCount(): number {
-    return this.tools.filter(tool => tool.status === 'ready').length;
-  }
-
-  get selectedCategoryName(): string {
-    if (this.selectedCategoryId === 'all') return 'All categories';
-    return this.categories.find(category => category.id === this.selectedCategoryId)?.name ?? 'All categories';
   }
 
   get categoryToolCounts(): Record<string, number> {
