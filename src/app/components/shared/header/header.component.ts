@@ -21,11 +21,12 @@ import { RouterModule } from "@angular/router";
         >
           <div class="relative flex items-center justify-center">
             <div
-              class="absolute inset-0 rounded-lg bg-gradient-to-br from-indigo-500 via-blue-500 to-violet-600 blur-lg opacity-30 animate-pulse"
+              class="absolute inset-0 rounded-xl bg-gradient-to-br from-indigo-500 via-blue-500 to-violet-600 blur-lg opacity-40 animate-pulse"
             ></div>
             <div
-              class="relative p-1.5 rounded-lg bg-gradient-to-br from-indigo-600 via-blue-600 to-violet-600 shadow-lg border border-white/10"
+              class="relative p-2 rounded-xl bg-gradient-to-br from-indigo-600 via-blue-600 to-violet-600 shadow-lg border border-white/20"
             >
+              <!-- PDF Toolkit logo: document + lightning bolt — original SVG (MIT-compatible, Heroicons-style) -->
               <svg
                 class="w-5 h-5 text-white"
                 viewBox="0 0 24 24"
@@ -35,36 +36,26 @@ import { RouterModule } from "@angular/router";
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
-                <path
-                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                ></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <path d="m9 15 2 2 4-4"></path>
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <path d="M12 17l-1.5-3H9l3-5 1.5 3H15z" />
               </svg>
             </div>
           </div>
-          <span
-            class="hidden sm:inline font-black text-lg -tracking-wider text-main"
-            >PDF Editor</span
-          >
+          <div class="hidden sm:flex flex-col leading-none">
+            <span class="font-black text-base tracking-tight text-main">PDF Toolkit</span>
+            <span class="text-[10px] font-semibold tracking-widest uppercase text-muted opacity-60">Free &amp; Open Source</span>
+          </div>
         </a>
 
         <!-- Navigation -->
-        <nav class="flex items-center gap-4">
-          <!-- Main Website -->
+        <nav class="flex items-center gap-2 sm:gap-4">
+          <!-- All Tools link -->
           <a
-            href="https://geekstash.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] font-black transition-all border border-indigo-500/20 bg-indigo-500/5 hover:bg-indigo-500/10 shadow-sm group"
+            routerLink="/tools"
+            class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold text-muted hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-500/8 transition-all duration-200 uppercase tracking-widest"
           >
-            <span
-              class="text-muted group-hover:text-indigo-600 transition-colors uppercase tracking-widest opacity-70"
-              >Project of</span
-            >
-            <span class="text-gradient text-sm tracking-tight"
-              >geekstash.dev</span
-            >
+            All Tools
           </a>
 
           <!-- Theme Toggle -->

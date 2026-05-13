@@ -1,0 +1,64 @@
+<app-tool-page
+  title="Compress PDF"
+  description="Reduce file size while optimizing for maximal PDF quality."
+  icon="minimize-2"
+  iconBg="rgba(245, 158, 11, 0.1)"
+  iconColor="#f59e0b"
+  [allowMultiple]="false"
+  actionLabel="Compress PDF"
+  actionIcon="minimize-2"
+  [isProcessing]="isProcessing"
+  [errorMessage]="errorMessage"
+  [selectedFiles]="files"
+  [downloadFiles]="downloads"
+  (filesChanged)="onFilesChanged($event)"
+  (process)="onProcess()"
+>
+  <div slot="settings" class="flex flex-col gap-6">
+    <div class="rounded-2xl border border-amber-200/70 bg-amber-50/70 p-4 text-sm text-amber-900">
+      This tool runs fully in your browser and keeps the PDF local while applying structural compression.
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <label class="text-sm font-bold text-slate-900 dark:text-white">Compression Mode</label>
+      <div class="grid gap-3 md:grid-cols-3">
+        @for (preset of compressionPresets; track preset.value) {
+          <label
+            class="cursor-pointer rounded-2xl border p-4 transition-all"
+            [class.border-amber-400]="compressionMode === preset.value"
+            [class.bg-amber-50]="compressionMode === preset.value"
+            [class.border-slate-200]="compressionMode !== preset.value"
+            [class.dark:border-slate-600]="compressionMode !== preset.value"
+            [class.dark:bg-slate-900]="compressionMode !== preset.value"
+          >
+            <input
+              type="radio"
+              class="sr-only"
+              name="compressionMode"
+              [(ngModel)]="compressionMode"
+              [value]="preset.value"
+            />
+            <div class="flex items-start gap-3">
+              <span class="mt-1 h-3 w-3 rounded-full border" [class.border-amber-500]="compressionMode === preset.value" [class.bg-amber-500]="compressionMode === preset.value" [class.border-slate-300]="compressionMode !== preset.value"></span>
+              <div>
+                <div class="text-sm font-semibold text-slate-900 dark:text-white">{{ preset.label }}</div>
+                <div class="mt-1 text-xs leading-5 text-slate-600 dark:text-slate-400">{{ preset.description }}</div>
+              </div>
+            </div>
+          </label>
+        }
+      </div>
+      <p class="text-xs text-slate-500">Lossless keeps the safest output. Balanced trims extra structure. Aggressive prioritizes a smaller file and may drop more document metadata.</p>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <label class="text-sm font-bold text-slate-900 dark:text-white">Output File Name (Optional)</label>
+      <input
+        type="text"
+        [(ngModel)]="customFileName"
+        placeholder="compressed-document.pdf"
+        class="px-4 py-3 border border-slate-200 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-sans text-base focus:outline-none focus:border-amber-500 dark:focus:border-amber-400 transition-colors"
+      />
+    </div>
+  </div>
+</app-tool-page>

@@ -10,62 +10,56 @@ import { Tool } from '../../../data/tools';
   standalone: true,
   imports: [RouterModule, SafeHtmlPipe],
   template: `
-    <div class="relative bg-card border border-main rounded-xl overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300 group"
+    <div
+      class="relative rounded-xl overflow-hidden cursor-pointer transition-all duration-300 group hover:shadow-lg hover:-translate-y-0.5"
+      [style.borderLeft]="'4px solid ' + cardColor"
+      [style.border]="'1px solid var(--border-main)'"
       [style.borderLeftWidth]="'4px'"
       [style.borderLeftColor]="cardColor"
       [style.backgroundColor]="'var(--bg-card)'"
-      [style.borderColor]="'var(--border-main)'"
       [style.boxShadow]="'var(--shadow-card)'"
-      (click)="navigate()">
-    
-      <!-- Content -->
-      <div class="flex items-center gap-5 p-5">
+      (click)="navigate()"
+    >
+      <div class="flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 md:p-5">
+
         <!-- Icon -->
-        <div class="flex-shrink-0">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-            [style.backgroundColor]="'rgba(' + cardColorRgb + ', 0.12)'"
-            [style.color]="cardColor">
-            <svg class="w-6 h-6" [attr.viewBox]="getIconData(icon).viewBox" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" [innerHTML]="getIconData(icon).path | safeHtml"></svg>
-          </div>
+        <div
+          class="flex-shrink-0 w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+          [style.backgroundColor]="'rgba(' + cardColorRgb + ', 0.12)'"
+          [style.color]="cardColor"
+        >
+          <svg class="w-5 h-5" [attr.viewBox]="getIconData(icon).viewBox" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" [innerHTML]="getIconData(icon).path | safeHtml"></svg>
         </div>
-    
+
         <!-- Text -->
         <div class="flex-1 min-w-0">
-          <div class="flex items-center gap-2 mb-1">
-            <h3 class="text-sm font-bold text-main truncate group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors" style="color: var(--text-main);">
-              {{ title }}
-            </h3>
+          <div class="flex items-center gap-1.5 mb-0.5">
+            <h3
+              class="text-sm font-bold truncate transition-colors duration-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400"
+              style="color: var(--text-main);"
+            >{{ title }}</h3>
             <div class="flex gap-1 flex-shrink-0">
               @if (status === 'beta') {
-                <span class="text-xs font-bold px-1.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400">
-                  Beta
-                </span>
+                <span class="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400">Beta</span>
               }
               @if (status === 'coming_soon') {
-                <span class="text-xs font-bold px-1.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400">
-                  Coming soon
-                </span>
-              }
-              @if (isLocal && showLocalBadge) {
-                <span class="text-xs font-bold px-1.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">
-                  Local
-                </span>
+                <span class="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 hidden sm:inline">Soon</span>
               }
             </div>
           </div>
-          <p class="text-xs text-muted line-clamp-2" style="color: var(--text-muted);">{{ description }}</p>
+          <p class="text-xs line-clamp-2 leading-relaxed" style="color: var(--text-muted);">{{ description }}</p>
         </div>
-    
+
         <!-- Arrow -->
-        <div class="flex-shrink-0 opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-muted" style="color: var(--text-muted);">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="flex-shrink-0 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200" style="color: var(--text-muted);">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
         </div>
       </div>
     </div>
-    `,
+  `,
   styles: []
 })
 export class ToolCardComponent implements OnInit {

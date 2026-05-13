@@ -11,7 +11,7 @@ import { SafeHtmlPipe } from '../../../pipes/safe-html.pipe';
     <div class="w-full">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         @for (pillar of pillars; track pillar) {
-          <div class="relative bg-card border border-main rounded-3xl p-8 transition-all duration-500 hover:shadow-xl hover:-translate-y-1.5 group" [style.backgroundColor]="'var(--bg-card)'" [style.borderColor]="'var(--border-main)'" [style.boxShadow]="'var(--shadow-card)'">
+          <div class="relative bg-card border border-main rounded-3xl p-5 sm:p-8 transition-all duration-500 hover:shadow-xl hover:-translate-y-1.5 group" [style.backgroundColor]="'var(--bg-card)'" [style.borderColor]="'var(--border-main)'" [style.boxShadow]="'var(--shadow-card)'">
             <!-- subtle hover glow -->
             <div class="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" [style.backgroundColor]="pillar.glowColor"></div>
             <div class="relative flex justify-between items-start mb-5">

@@ -93,12 +93,12 @@ export const toolsData: Tool[] = [
     id: "compress-pdf",
     name: "Compress PDF",
     category: "optimize",
-    description: "Reduce file size while optimizing for maximal PDF quality.",
+    description: "Reduce file size with lossless, balanced, or aggressive local compression presets.",
     icon: "minimize-2",
-    keywords: ["compress", "smaller", "shrink", "optimize size"],
+    keywords: ["compress", "smaller", "shrink", "optimize size", "lossless"],
     tags: ["pdf", "compress", "shrink", ...COMMON_TAGS],
     route: "/tools/compress-pdf",
-    status: 'coming_soon',
+    status: 'ready',
     isLocal: true
   },
   {
@@ -110,7 +110,7 @@ export const toolsData: Tool[] = [
     keywords: ["flatten", "layers", "uneditable", "merge layers"],
     tags: ["pdf", "flatten", "security", ...COMMON_TAGS],
     route: "/tools/flatten-pdf",
-    status: 'coming_soon',
+    status: 'ready',
     isLocal: true
   },
 
@@ -197,7 +197,7 @@ export const toolsData: Tool[] = [
     id: "protect-pdf",
     name: "Protect PDF",
     category: "security",
-    description: "Encrypt your PDF with a password to keep sensitive data confidential.",
+    description: "Encrypt your PDF with a password and confirm it before download.",
     icon: "lock",
     keywords: ["protect", "password", "encrypt", "lock", "secure"],
     tags: ["pdf", "secure", "password", "privacy", ...COMMON_TAGS],
@@ -209,7 +209,7 @@ export const toolsData: Tool[] = [
     id: "unlock-pdf",
     name: "Unlock PDF",
     category: "security",
-    description: "Remove PDF password security, giving you the freedom to use your PDFs as you want.",
+    description: "Remove PDF password security by rebuilding an unlocked local copy.",
     icon: "unlock",
     keywords: ["unlock", "remove password", "decrypt", "open secure"],
     tags: ["pdf", "secure", "unlock", ...COMMON_TAGS],
@@ -250,7 +250,7 @@ export const topSixTools: Tool[] = [
   toolsData.find(t => t.id === 'compress-pdf')!,
   toolsData.find(t => t.id === 'image-to-pdf')!,
   toolsData.find(t => t.id === 'protect-pdf')!,
-  toolsData.find(t => t.id === 'add-watermark')!,
+  toolsData.find(t => t.id === 'pdf-to-image')!,
 ];
 
 /**

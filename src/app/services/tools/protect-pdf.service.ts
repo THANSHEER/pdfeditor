@@ -5,31 +5,32 @@ import { PDFDocument } from 'pdf-lib-plus-encrypt';
   providedIn: 'root',
 })
 export class ProtectPdfService {
-  /**
-   * Protects a PDF file with a password.
-   * 
-   * @param file The PDF File object to protect.
-   * @param password The password to set.
-   * @returns A promise resolving to a Uint8Array containing the encrypted PDF bytes.
-   */
   async protect(file: File, password: string): Promise<Uint8Array> {
-    const bytes = await file.arrayBuffer();
-    const pdfDoc = await PDFDocument.load(bytes);
-    
-    const encryptedBytes = await (pdfDoc as any).save({
+    const pdfBytes = await file.arrayBuffer();
+    const pdfDoc = await PDFDocument.load(pdfBytes);
+    const ownerPassword = this.createOwnerPassword();
+
+    await pdfDoc.encrypt({
       userPassword: password,
-      ownerPassword: password,
+      ownerPassword,
       permissions: {
         printing: 'highResolution',
-        modifying: true,
-        copying: true,
-        annotating: true,
-        fillingForms: true,
+        modifying: false,
+        copying: false,
+        annotating: false,
+        fillingForms: false,
         contentAccessibility: true,
-        documentAssembly: true,
+        documentAssembly: false,
       },
     });
 
-    return encryptedBytes;
+    return pdfDoc.save();
+  }
+
+  private createOwnerPassword(): string {
+    const entropy = new Uint8Array(16);
+    globalThis.crypto.getRandomValues(entropy);
+
+    return Array.from(entropy, (value) => value.toString(16).padStart(2, '0')).join('');
   }
 }

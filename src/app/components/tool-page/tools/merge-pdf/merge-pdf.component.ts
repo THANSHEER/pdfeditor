@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { ToolPageComponent, DownloadFile } from '../../tool-page.component';
-import { MergePdfService } from '../../../../services/merge-pdf.service';
+import { MergePdfService } from '../../../../services/tools/merge-pdf.service';
 
 /**
  * Component for merging multiple PDF files into a single document.
