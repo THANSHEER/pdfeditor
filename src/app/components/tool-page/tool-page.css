@@ -122,20 +122,6 @@
   font-weight: 700;
   color: var(--text-main);
 }
-.add-more-btn {
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  background: rgba(99, 102, 241, 0.08);
-  border: 1px solid rgba(99, 102, 241, 0.15);
-  padding: 0.35rem 0.85rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.add-more-btn:hover {
-  background: rgba(99, 102, 241, 0.15);
-}
 .file-item {
   display: flex;
   align-items: center;
@@ -175,37 +161,6 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-.move-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text-muted);
-  font-size: 0.75rem;
-  padding: 0.25rem;
-  transition: color 0.2s;
-}
-.move-btn:hover:not(:disabled) {
-  color: var(--color-primary);
-}
-.move-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-.remove-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text-muted);
-  transition: color 0.2s;
-  padding: 0.25rem;
-}
-.remove-btn:hover {
-  color: #ef4444;
-}
-.remove-icon {
-  width: 1.2rem;
-  height: 1.2rem;
 }
 .settings-panel {
   background: var(--bg-card);

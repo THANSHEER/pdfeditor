@@ -67,7 +67,13 @@ export interface DownloadFile {
           <div class="file-list" (click)="$event.stopPropagation()">
             <div class="file-list-header">
               <span class="file-count">{{ selectedFiles.length }} file{{ selectedFiles.length !== 1 ? 's' : '' }} selected</span>
-              <button class="add-more-btn" (click)="fileInput.click()">+ Add more</button>
+              <button
+                class="inline-flex items-center rounded-lg border border-[rgba(99,102,241,0.15)] bg-[rgba(99,102,241,0.08)] px-3 py-1.5 text-xs font-bold text-[var(--color-primary)] transition-colors hover:bg-[rgba(99,102,241,0.15)]"
+                type="button"
+                (click)="fileInput.click()"
+              >
+                + Add more
+              </button>
             </div>
             @for (f of selectedFiles; track f; let i = $index) {
               <div class="file-item">
@@ -83,12 +89,30 @@ export interface DownloadFile {
                 </div>
                 <div class="file-actions">
                   @if (allowMultiple && selectedFiles.length > 1) {
-                    <button class="move-btn" [disabled]="i === 0" (click)="moveFileUp(i)">▲</button>
+                    <button
+                      class="rounded p-1 text-xs text-[var(--text-muted)] transition-colors hover:text-[var(--color-primary)] disabled:cursor-not-allowed disabled:opacity-30"
+                      [disabled]="i === 0"
+                      type="button"
+                      (click)="moveFileUp(i)"
+                    >
+                      ▲
+                    </button>
                   }
                   @if (allowMultiple && selectedFiles.length > 1) {
-                    <button class="move-btn" [disabled]="i === selectedFiles.length - 1" (click)="moveFileDown(i)">▼</button>
+                    <button
+                      class="rounded p-1 text-xs text-[var(--text-muted)] transition-colors hover:text-[var(--color-primary)] disabled:cursor-not-allowed disabled:opacity-30"
+                      [disabled]="i === selectedFiles.length - 1"
+                      type="button"
+                      (click)="moveFileDown(i)"
+                    >
+                      ▼
+                    </button>
                   }
-                  <button class="remove-btn" (click)="removeFile(i)">
+                  <button
+                    class="rounded p-1 text-[var(--text-muted)] transition-colors hover:text-[#ef4444]"
+                    type="button"
+                    (click)="removeFile(i)"
+                  >
                     <svg class="remove-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <circle cx="12" cy="12" r="10"></circle>
                       <line x1="15" y1="9" x2="9" y2="15"></line>
