@@ -1,0 +1,65 @@
+<app-tool-page
+  title="Flatten PDF"
+  description="Make form fields and layers permanently uneditable by baking them into the page content."
+  icon="layers"
+  iconBg="rgba(168, 85, 247, 0.1)"
+  iconColor="#a855f7"
+  [allowMultiple]="false"
+  actionLabel="Flatten PDF"
+  actionIcon="layers"
+  [isProcessing]="isProcessing"
+  [errorMessage]="errorMessage"
+  [selectedFiles]="files"
+  [downloadFiles]="downloads"
+  (filesChanged)="onFilesChanged($event)"
+  (process)="onProcess()"
+>
+  <div slot="settings" class="flex flex-col gap-6">
+    <!-- Info Banner -->
+    <div class="rounded-2xl border border-purple-200/70 bg-purple-50/70 dark:border-purple-800/40 dark:bg-purple-900/10 p-4 text-sm text-purple-900 dark:text-purple-200">
+      <p class="font-semibold mb-1">What flattening does</p>
+      <ul class="list-disc list-inside space-y-1 text-xs leading-relaxed text-purple-800 dark:text-purple-300">
+        <li>Converts interactive form fields into static page content</li>
+        <li>Prevents any further editing of embedded form data</li>
+        <li>Reduces file complexity and improves compatibility</li>
+        <li>All processing happens locally — your file never leaves your device</li>
+      </ul>
+    </div>
+
+    <!-- Field count result badge -->
+    @if (flattenedFieldCount !== null) {
+      @if (flattenedFieldCount > 0) {
+        <div class="flex items-center gap-3 rounded-2xl border border-purple-200 dark:border-purple-800/50 bg-purple-50 dark:bg-purple-900/10 px-4 py-3 text-sm">
+          <svg class="w-5 h-5 text-purple-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <p class="text-purple-700 dark:text-purple-300 font-medium">
+            {{ flattenedFieldCount }} form field{{ flattenedFieldCount !== 1 ? 's' : '' }} flattened into static content.
+          </p>
+        </div>
+      } @else {
+        <div class="flex items-center gap-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 px-4 py-3 text-sm">
+          <svg class="w-5 h-5 text-slate-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <p class="text-slate-600 dark:text-slate-400">
+            No interactive form fields found. The PDF has been rebuilt and normalized.
+          </p>
+        </div>
+      }
+    }
+
+    <!-- Output Filename -->
+    <div class="flex flex-col gap-2">
+      <label class="text-sm font-bold text-slate-900 dark:text-white"
+        >Output File Name (Optional)</label
+      >
+      <input
+        type="text"
+        [(ngModel)]="customFileName"
+        placeholder="flattened-document.pdf"
+        class="px-4 py-3 border border-slate-200 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-sans text-base focus:outline-none focus:border-purple-500 dark:focus:border-purple-400 transition-colors"
+      />
+    </div>
+  </div>
+</app-tool-page>

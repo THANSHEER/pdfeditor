@@ -1,0 +1,63 @@
+name: Feature Request
+description: Suggest a new tool or improvement for PDF Toolkit
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an improvement! Please fill out the details below.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / motivation
+      description: Is your feature request related to a problem? Describe the use-case.
+      placeholder: I often need to add page numbers to a PDF but there's no tool for it…
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Describe what you'd like to see. Be as specific as possible.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Tool category
+      description: Which category would this belong to?
+      options:
+        - Basic PDF Tools
+        - Optimize PDF
+        - Convert to PDF
+        - Convert from PDF
+        - Edit PDF
+        - PDF Security
+        - New category
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: client_side
+    attributes:
+      label: Client-side constraint
+      description: PDF Toolkit is 100% client-side. Can this feature be implemented without a server?
+      options:
+        - label: Yes, this can work fully in the browser
+          required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any alternative solutions or tools you've considered?
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Mockups, references, or any other information.

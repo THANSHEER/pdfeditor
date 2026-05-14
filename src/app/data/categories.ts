@@ -15,7 +15,7 @@ export const categoriesData: Category[] = [
   {
     id: "optimize",
     name: "Optimize PDF",
-    description: "Improve performance, repair, or flatten your PDF files.",
+    description: "Improve performance, compress with presets, repair, or flatten your PDF files.",
     icon: "minimize"
   },
   {

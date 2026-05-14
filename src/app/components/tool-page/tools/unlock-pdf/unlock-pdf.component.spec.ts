@@ -20,4 +20,10 @@ describe('UnlockPdfComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should toggle password visibility', () => {
+    expect(component.showPassword).toBeFalse();
+    component.togglePasswordVisibility();
+    expect(component.showPassword).toBeTrue();
+  });
 });

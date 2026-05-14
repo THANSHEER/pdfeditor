@@ -35,6 +35,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "qpdf.js",
+                "input": "node_modules/qpdf-wasm",
+                "output": "/"
               }
             ],
             "styles": [

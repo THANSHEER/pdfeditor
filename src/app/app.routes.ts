@@ -74,6 +74,20 @@ export const routes: Routes = [
         (m) => m.UnlockPdfComponent,
       ),
   },
+  {
+    path: "tools/compress-pdf",
+    loadComponent: () =>
+      import("./components/tool-page/tools/compress-pdf/compress-pdf.component").then(
+        (m) => m.CompressPdfComponent,
+      ),
+  },
+  {
+    path: "tools/flatten-pdf",
+    loadComponent: () =>
+      import("./components/tool-page/tools/flatten-pdf/flatten-pdf.component").then(
+        (m) => m.FlattenPdfComponent,
+      ),
+  },
 
   // ─── Unified PDF Editor Workspace ─────────────────────────────────────────────
   {
