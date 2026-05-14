@@ -1,5 +1,5 @@
 import { Routes } from "@angular/router";
-import { LayoutComponent } from "./components/layout/layout.component";
+import { LayoutComponent } from "./components/layout/layout";
 
 export const routes: Routes = [
   // ========== Layout Pages (Header + Footer via LayoutComponent) ==========
@@ -10,14 +10,14 @@ export const routes: Routes = [
       {
         path: "",
         loadComponent: () =>
-          import("./components/homepage/homepage.component").then(
+          import("./components/homepage/homepage").then(
             (m) => m.HomepageComponent,
           ),
       },
       {
         path: "tools",
         loadComponent: () =>
-          import("./components/explore-all-tools/explore-all-tools.component").then(
+          import("./components/explore-all-tools/explore-all-tools").then(
             (m) => m.ExploreAllToolsComponent,
           ),
       },
@@ -28,64 +28,86 @@ export const routes: Routes = [
   {
     path: "tools/merge-pdf",
     loadComponent: () =>
-      import("./components/tool-page/tools/merge-pdf/merge-pdf.component").then(
+      import("./components/tool-page/tools/merge-pdf/merge-pdf").then(
         (m) => m.MergePdfComponent,
       ),
   },
   {
     path: "tools/split-pdf",
     loadComponent: () =>
-      import("./components/tool-page/tools/split-pdf/split-pdf.component").then(
+      import("./components/tool-page/tools/split-pdf/split-pdf").then(
         (m) => m.SplitPdfComponent,
       ),
   },
   {
     path: "tools/html-to-pdf",
     loadComponent: () =>
-      import("./components/tool-page/tools/html-to-pdf/html-to-pdf.component").then(
+      import("./components/tool-page/tools/html-to-pdf/html-to-pdf").then(
         (m) => m.HtmlToPdfComponent,
       ),
   },
   {
     path: "tools/image-to-pdf",
     loadComponent: () =>
-      import("./components/tool-page/tools/image-to-pdf/image-to-pdf.component").then(
+      import("./components/tool-page/tools/image-to-pdf/image-to-pdf").then(
         (m) => m.ImageToPdfComponent,
       ),
   },
   {
     path: "tools/pdf-to-image",
     loadComponent: () =>
-      import("./components/tool-page/tools/pdf-to-image/pdf-to-image.component").then(
+      import("./components/tool-page/tools/pdf-to-image/pdf-to-image").then(
         (m) => m.PdfToImageComponent,
       ),
   },
   {
     path: "tools/protect-pdf",
     loadComponent: () =>
-      import("./components/tool-page/tools/protect-pdf/protect-pdf.component").then(
+      import("./components/tool-page/tools/protect-pdf/protect-pdf").then(
         (m) => m.ProtectPdfComponent,
       ),
   },
   {
     path: "tools/unlock-pdf",
     loadComponent: () =>
-      import("./components/tool-page/tools/unlock-pdf/unlock-pdf.component").then(
+      import("./components/tool-page/tools/unlock-pdf/unlock-pdf").then(
         (m) => m.UnlockPdfComponent,
       ),
   },
   {
     path: "tools/compress-pdf",
     loadComponent: () =>
-      import("./components/tool-page/tools/compress-pdf/compress-pdf.component").then(
+      import("./components/tool-page/tools/compress-pdf/compress-pdf").then(
         (m) => m.CompressPdfComponent,
       ),
   },
   {
     path: "tools/flatten-pdf",
     loadComponent: () =>
-      import("./components/tool-page/tools/flatten-pdf/flatten-pdf.component").then(
+      import("./components/tool-page/tools/flatten-pdf/flatten-pdf").then(
         (m) => m.FlattenPdfComponent,
+      ),
+  },
+
+  {
+    path: 'tools/add-watermark',
+    loadComponent: () =>
+      import('./components/tool-page/tools/add-watermark/add-watermark').then(
+        (m) => m.AddWatermarkComponent,
+      ),
+  },
+  {
+    path: 'tools/add-page-numbers',
+    loadComponent: () =>
+      import('./components/tool-page/tools/add-page-numbers/add-page-numbers').then(
+        (m) => m.AddPageNumbersComponent,
+      ),
+  },
+  {
+    path: 'tools/crop-pdf',
+    loadComponent: () =>
+      import('./components/tool-page/tools/crop-pdf/crop-pdf').then(
+        (m) => m.CropPdfComponent,
       ),
   },
 
@@ -93,7 +115,7 @@ export const routes: Routes = [
   {
     path: "tools/editor/:tool",
     loadComponent: () =>
-      import("./components/pdf-workspace/pdf-workspace.component").then(
+      import("./components/pdf-workspace/pdf-workspace").then(
         (m) => m.PdfWorkspaceComponent,
       ),
   },

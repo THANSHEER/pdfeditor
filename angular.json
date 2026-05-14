@@ -8,13 +8,16 @@
       "schematics": {
         "@schematics/angular:component": {
           "standalone": true,
-          "style": "css"
+          "style": "css",
+          "type": ""
         },
         "@schematics/angular:directive": {
-          "standalone": true
+          "standalone": true,
+          "type": ""
         },
         "@schematics/angular:pipe": {
-          "standalone": true
+          "standalone": true,
+          "type": ""
         }
       },
       "root": "",
@@ -98,28 +101,28 @@
   },
   "schematics": {
     "@schematics/angular:component": {
-      "type": "component"
+      "type": ""
     },
     "@schematics/angular:directive": {
-      "type": "directive"
+      "type": ""
     },
     "@schematics/angular:service": {
-      "type": "service"
+      "type": ""
     },
     "@schematics/angular:guard": {
-      "typeSeparator": "."
+      "type": ""
     },
     "@schematics/angular:interceptor": {
-      "typeSeparator": "."
+      "type": ""
     },
     "@schematics/angular:module": {
-      "typeSeparator": "."
+      "type": ""
     },
     "@schematics/angular:pipe": {
-      "typeSeparator": "."
+      "type": ""
     },
     "@schematics/angular:resolver": {
-      "typeSeparator": "."
+      "type": ""
     }
   }
 }

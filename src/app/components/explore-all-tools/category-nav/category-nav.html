@@ -1,0 +1,28 @@
+<div class="category-nav-wrap">
+  <div class="category-fade category-fade-left" aria-hidden="true"></div>
+  <div class="category-fade category-fade-right" aria-hidden="true"></div>
+
+  <div #scrollContainer class="category-scroll no-scrollbar">
+    @for (cat of categories; track cat.id) {
+      <button
+        (click)="onSelectCategory(cat.id)"
+        [attr.data-active]="selectedCategoryId === cat.id"
+        class="category-pill focus-ring"
+        [ngClass]="{ 'is-active': selectedCategoryId === cat.id }"
+      >
+        <svg
+          class="category-pill-icon"
+          [attr.viewBox]="getIconData(getIcon(cat.icon)).viewBox"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          [innerHTML]="getIconData(getIcon(cat.icon)).path | safeHtml"
+        ></svg>
+        <span>{{ cat.name }}</span>
+        <strong>{{ getToolCount(cat.id) }}</strong>
+      </button>
+    }
+  </div>
+</div>

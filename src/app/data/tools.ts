@@ -164,7 +164,7 @@ export const toolsData: Tool[] = [
     keywords: ["watermark", "stamp", "copyright", "overlay"],
     tags: ["pdf", "edit", "watermark", ...COMMON_TAGS],
     route: "/tools/add-watermark",
-    status: 'coming_soon',
+    status: 'ready',
     isLocal: true
   },
   {
@@ -176,7 +176,7 @@ export const toolsData: Tool[] = [
     keywords: ["numbers", "pagination", "pages", "order"],
     tags: ["pdf", "edit", "numbers", ...COMMON_TAGS],
     route: "/tools/add-page-numbers",
-    status: 'coming_soon',
+    status: 'ready',
     isLocal: true
   },
   {
@@ -188,7 +188,7 @@ export const toolsData: Tool[] = [
     keywords: ["crop", "trim", "cut", "resize", "margins"],
     tags: ["pdf", "edit", "crop", ...COMMON_TAGS],
     route: "/tools/crop-pdf",
-    status: 'coming_soon',
+    status: 'ready',
     isLocal: true
   },
 
