@@ -46,10 +46,6 @@
 .tools-search-shell {
   width: min(100% - 2rem, 52rem);
   margin: 0 auto 1rem;
-  padding: 1rem;
-  border-radius: 8px;
-  position: relative;
-  z-index: 10;
 }
 
 .tools-sections {

@@ -104,6 +104,20 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'tools/redact-pdf',
+    loadComponent: () =>
+      import('./components/tool-page/tools/redact-pdf/redact-pdf').then(
+        (m) => m.RedactPdfComponent,
+      ),
+  },
+  {
+    path: 'tools/sign-pdf',
+    loadComponent: () =>
+      import('./components/tool-page/tools/sign-pdf/sign-pdf').then(
+        (m) => m.SignPdfComponent,
+      ),
+  },
+  {
     path: 'tools/crop-pdf',
     loadComponent: () =>
       import('./components/tool-page/tools/crop-pdf/crop-pdf').then(

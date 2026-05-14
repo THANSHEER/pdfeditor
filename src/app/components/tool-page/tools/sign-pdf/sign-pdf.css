@@ -1,0 +1,50 @@
+:host {
+  display: block;
+}
+
+.signature-pad-wrap {
+  position: relative;
+  min-height: 220px;
+  border: 1px solid var(--border-main);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(99, 102, 241, 0.04), transparent),
+    var(--bg-card);
+  overflow: hidden;
+}
+
+.signature-pad {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  touch-action: none;
+}
+
+.signature-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.signature-preview {
+  min-height: 124px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 16px;
+}
+
+.signature-preview img {
+  width: 100%;
+  max-height: 120px;
+  object-fit: contain;
+  display: block;
+}

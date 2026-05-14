@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { ICONS } from '../../../data/icons';
 import { SafeHtmlPipe } from '../../../pipes/safe-html';
 import { Tool } from '../../../data/tools';
@@ -8,11 +8,12 @@ import { Tool } from '../../../data/tools';
 @Component({
   selector: 'app-tool-card',
   standalone: true,
-  imports: [RouterModule, SafeHtmlPipe],
+  imports: [SafeHtmlPipe],
   template: `
-    <a
+    <button
+      type="button"
       class="tool-card focus-ring"
-      [routerLink]="route"
+      (click)="navigate()"
       [style.--tool-color]="cardColor"
       [style.--tool-color-rgb]="cardColorRgb"
     >
@@ -38,7 +39,7 @@ import { Tool } from '../../../data/tools';
         <span class="tool-title">{{ title }}</span>
         <span class="tool-description">{{ description }}</span>
       </span>
-    </a>
+    </button>
   `,
   styleUrl: './tool-card.css'
 })
@@ -64,6 +65,8 @@ export class ToolCardComponent implements OnInit {
     'security': { hex: '#ef4444', rgb: '239, 68, 68' }
   };
 
+  constructor(private readonly router: Router) {}
+
   getIconData(name: string) {
     return ICONS[name] || ICONS['file'];
   }
@@ -72,5 +75,11 @@ export class ToolCardComponent implements OnInit {
     const color = this.colorMap[this.category] || this.colorMap['basic'];
     this.cardColor = color.hex;
     this.cardColorRgb = color.rgb;
+  }
+
+  navigate() {
+    if (this.route) {
+      void this.router.navigateByUrl(this.route);
+    }
   }
 }

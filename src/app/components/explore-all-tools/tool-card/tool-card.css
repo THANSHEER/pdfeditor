@@ -13,13 +13,16 @@
   justify-content: flex-start;
   gap: 0.95rem;
   padding: 1rem;
+  width: 100%;
+  text-align: left;
+  appearance: none;
   border: 1px solid var(--border-main);
   border-left: 4px solid var(--tool-color);
   border-radius: 8px;
   background: var(--bg-card);
   color: var(--text-main);
   box-shadow: var(--shadow-card);
-  text-decoration: none;
+  cursor: pointer;
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease,

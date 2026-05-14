@@ -9,9 +9,9 @@
     </div>
   </section>
 
-  <section class="tools-search-shell surface-panel" aria-label="Tool search">
+  <div class="tools-search-shell" aria-label="Tool search">
     <app-search-bar [value]="searchQuery" (search)="onSearch($event)"></app-search-bar>
-  </section>
+  </div>
 
   <app-category-nav
     [selectedCategoryId]="selectedCategoryId"

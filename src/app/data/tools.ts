@@ -226,7 +226,7 @@ export const toolsData: Tool[] = [
     keywords: ["redact", "black out", "hide info", "censor"],
     tags: ["pdf", "secure", "redact", ...COMMON_TAGS],
     route: "/tools/redact-pdf",
-    status: 'coming_soon',
+    status: 'ready',
     isLocal: true
   },
   {
@@ -238,7 +238,7 @@ export const toolsData: Tool[] = [
     keywords: ["sign", "signature", "e-sign", "contract"],
     tags: ["pdf", "secure", "sign", ...COMMON_TAGS],
     route: "/tools/sign-pdf",
-    status: 'coming_soon',
+    status: 'ready',
     isLocal: true
   }
 ];
