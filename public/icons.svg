@@ -1,19 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 128 128" fill="none">
   <defs>
-    <linearGradient id="favicon_grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#2563eb;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    <linearGradient id="bg" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4f46e5"/>
+      <stop offset=".5" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#7c3aed"/>
     </linearGradient>
+    <linearGradient id="pen" x1="26" y1="100" x2="92" y2="28" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#312e81"/>
+      <stop offset="1" stop-color="#4c1d95"/>
+    </linearGradient>
+    <filter id="doc-shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#00000028"/>
+    </filter>
   </defs>
-  <!-- Background with gradient -->
-  <rect width="32" height="32" rx="8" fill="url(#favicon_grad)" />
-  <!-- White icon on top -->
-  <g transform="translate(4, 4) scale(1)">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-      <polyline points="14 2 14 8 20 8"></polyline>
-      <path d="m9 15 2 2 4-4"></path>
-    </svg>
-  </g>
+  <!-- Rounded square background -->
+  <rect width="128" height="128" rx="26" fill="url(#bg)"/>
+  <!-- Document: white paper with folded top-right corner -->
+  <path d="M28 12h44l28 28v64a8 8 0 0 1-8 8H28a8 8 0 0 1-8-8V20a8 8 0 0 1 8-8z"
+        fill="white" fill-opacity=".95" filter="url(#doc-shadow)"/>
+  <!-- Corner fold overlay -->
+  <path d="M72 12 L100 40 H80 a8 8 0 0 1-8-8 V12z" fill="white" fill-opacity=".38"/>
+  <!-- Pen body: diagonal parallelogram (all original geometry) -->
+  <path d="M33 80 L40 87 L86 40 L79 33 Z" fill="url(#pen)" fill-opacity=".9"/>
+  <!-- Pen tip: triangle at lower-left -->
+  <path d="M33 80 L25 102 L44 88 Z" fill="#312e81" fill-opacity=".9"/>
+  <!-- Pen eraser: rotated square at upper-right -->
+  <path d="M79 33 L86 40 L94 32 L87 25 Z" fill="white" fill-opacity=".68"/>
+  <!-- Eraser ferrule band -->
+  <line x1="80" y1="34" x2="88" y2="26" stroke="white" stroke-width="2.5" stroke-opacity=".35" stroke-linecap="round"/>
 </svg>
