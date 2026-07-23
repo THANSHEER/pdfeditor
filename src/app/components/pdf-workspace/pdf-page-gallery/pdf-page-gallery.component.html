@@ -41,7 +41,7 @@
       <div class="toolbar-right">
         <!-- Remove mode buttons -->
         @if (mode === 'remove') {
-          <button class="tb-btn danger" (click)="deleteAll()" type="button">
+          <button class="tb-btn" style="border-color:#ef4444;color:#ef4444" (click)="deleteAll()" type="button">
             <svg class="tb-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="3 6 5 6 21 6"></polyline>
               <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
@@ -49,7 +49,7 @@
             Delete All
           </button>
           @if (deletedCount > 0) {
-            <button class="tb-btn success" (click)="restoreAll()" type="button">
+            <button class="tb-btn" style="border-color:rgba(16,185,129,0.25);background:rgba(16,185,129,0.08);color:#10b981" (click)="restoreAll()" type="button">
               <svg class="tb-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" /><path d="M21 3v5h-5" />
               </svg>
@@ -88,7 +88,7 @@
             </svg>
             Rotate All ↻
           </button>
-          <button class="tb-btn danger" (click)="resetAllRotations()" type="button">
+          <button class="tb-btn" style="border-color:#ef4444;color:#ef4444" (click)="resetAllRotations()" type="button">
             <svg class="tb-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line>
             </svg>
@@ -147,14 +147,6 @@
             @if (mode === 'rotate' && page.rotation !== 0) {
               <div class="rotation-badge">
                 {{ page.rotation }}°
-              </div>
-            }
-            <!-- Drag handle (organize mode) -->
-            @if (mode === 'organize') {
-              <div class="drag-handle">
-                <svg class="drag-handle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="9" cy="12" r="1"/><circle cx="9" cy="5" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="19" r="1"/>
-                </svg>
               </div>
             }
           </div>

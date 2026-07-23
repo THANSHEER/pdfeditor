@@ -1,17 +1,7 @@
-/* ====================================================================
-   PDF Page Gallery — Premium Adobe-style gallery component
-   ==================================================================== */
-
 :host {
   display: block;
   width: 100%;
 }
-
-/* ── Gallery Container ─────────────────────────────────────────────── */
-.gallery-wrap {
-  width: 100%;
-}
-
 .gallery-toolbar {
   position: sticky;
   top: 0;
@@ -27,27 +17,23 @@
   border: 1px solid var(--border-main);
   border-radius: 1rem;
 }
-
 .toolbar-left {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
 }
-
 .toolbar-right {
   display: flex;
   align-items: center;
   gap: 0.625rem;
   flex-wrap: wrap;
 }
-
 .toolbar-label {
   font-size: 0.8125rem;
   font-weight: 700;
   color: var(--text-muted);
 }
-
 .toolbar-count {
   font-size: 0.8125rem;
   font-weight: 800;
@@ -57,8 +43,6 @@
   border-radius: 99px;
   border: 1px solid var(--border-main);
 }
-
-/* ── Toolbar Buttons ───────────────────────────────────────────────── */
 .tb-btn {
   display: inline-flex;
   align-items: center;
@@ -79,36 +63,10 @@
   color: var(--color-primary);
   background: rgba(99, 102, 241, 0.05);
 }
-.tb-btn.danger:hover {
-  border-color: #ef4444;
-  color: #ef4444;
-  background: rgba(239, 68, 68, 0.05);
-}
-.tb-btn.success {
-  background: rgba(16, 185, 129, 0.08);
-  border-color: rgba(16, 185, 129, 0.25);
-  color: #10b981;
-}
-.tb-btn.success:hover {
-  background: rgba(16, 185, 129, 0.15);
-}
-.tb-btn.primary {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: white;
-  box-shadow: 0 4px 12px -3px rgba(99, 102, 241, 0.35);
-}
-.tb-btn.primary:hover {
-  background: var(--color-primary-hover);
-  box-shadow: 0 6px 18px -4px rgba(99, 102, 241, 0.45);
-  color: white;
-}
 .tb-btn-icon {
   width: 0.9rem;
   height: 0.9rem;
 }
-
-/* ── Page Grid ─────────────────────────────────────────────────────── */
 .page-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -116,21 +74,6 @@
   padding: 0.25rem;
   align-items: start;
 }
-
-/* ── Split-point row (for split tool) ─────────────────────────────── */
-.page-row {
-  display: contents;
-}
-
-.split-slot {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  grid-column: span 1;
-  min-height: 100%;
-}
-
-/* ── Page Card ─────────────────────────────────────────────────────── */
 .page-card {
   position: relative;
   border-radius: 0.875rem;
@@ -141,33 +84,25 @@
   transition: all 0.2s ease;
   user-select: none;
 }
-
 .page-card:hover {
   border-color: var(--color-primary);
   box-shadow: 0 4px 20px -4px rgba(99, 102, 241, 0.18);
   transform: translateY(-2px);
 }
-
-/* Selectable mode */
 .page-card.selectable {
   cursor: pointer;
 }
-
 .page-card.selected {
   border-color: var(--color-primary);
   box-shadow:
     0 0 0 3px rgba(99, 102, 241, 0.2),
     0 4px 20px -4px rgba(99, 102, 241, 0.25);
 }
-
-/* Deleted state */
 .page-card.deleted {
   opacity: 0.55;
   border-color: #ef4444;
   border-style: dashed;
 }
-
-/* Drag mode */
 .page-card.draggable {
   cursor: grab;
 }
@@ -179,16 +114,13 @@
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
 }
-
-/* ── Thumbnail ─────────────────────────────────────────────────────── */
 .thumb-wrap {
   position: relative;
   width: 100%;
-  padding-top: 141.4%; /* A4 ratio */
+  padding-top: 141.4%;
   background: var(--bg-surface);
   overflow: hidden;
 }
-
 .thumb-img {
   position: absolute;
   inset: 0;
@@ -198,8 +130,6 @@
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   background: #fff;
 }
-
-/* Rotation preview via CSS */
 .rotate-0 {
   transform: rotate(0deg);
 }
@@ -212,8 +142,6 @@
 .rotate-270 {
   transform: rotate(270deg) scaleX(0.707) scaleY(0.707);
 }
-
-/* Deleted overlay */
 .deleted-overlay {
   position: absolute;
   inset: 0;
@@ -223,7 +151,6 @@
   justify-content: center;
   z-index: 2;
 }
-
 .deleted-x {
   font-size: 3rem;
   color: #ef4444;
@@ -231,8 +158,6 @@
   line-height: 1;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
-
-/* Selected checkmark overlay */
 .selected-overlay {
   position: absolute;
   top: 0.5rem;
@@ -247,14 +172,11 @@
   z-index: 3;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
-
 .check-icon {
   width: 0.875rem;
   height: 0.875rem;
   color: white;
 }
-
-/* Rotation badge */
 .rotation-badge {
   position: absolute;
   top: 0.5rem;
@@ -268,34 +190,6 @@
   z-index: 3;
   backdrop-filter: blur(4px);
 }
-
-/* Drag handle */
-.drag-handle {
-  position: absolute;
-  top: 0.4rem;
-  left: 0.4rem;
-  width: 1.4rem;
-  height: 1.4rem;
-  background: rgba(0, 0, 0, 0.55);
-  border-radius: 0.35rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3;
-  cursor: grab;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-.page-card:hover .drag-handle {
-  opacity: 1;
-}
-.drag-handle-icon {
-  width: 0.85rem;
-  height: 0.85rem;
-  color: white;
-}
-
-/* ── Card Footer ───────────────────────────────────────────────────── */
 .card-footer {
   padding: 0.5rem 0.625rem;
   display: flex;
@@ -304,19 +198,16 @@
   gap: 0.25rem;
   background: var(--bg-card);
 }
-
 .page-num {
   font-size: 0.75rem;
   font-weight: 800;
   color: var(--text-muted);
 }
-
 .card-actions {
   display: flex;
   align-items: center;
   gap: 0.25rem;
 }
-
 .card-btn {
   width: 1.625rem;
   height: 1.625rem;
@@ -352,8 +243,6 @@
   width: 0.8rem;
   height: 0.8rem;
 }
-
-/* ── Split markers ─────────────────────────────────────────────────── */
 .split-marker-wrap {
   display: flex;
   flex-direction: column;
@@ -364,19 +253,16 @@
   padding: 0 0.25rem;
   cursor: pointer;
 }
-
 .split-line {
   width: 3px;
   flex: 1;
   border-left: 3px dashed var(--border-main);
   transition: border-color 0.2s;
 }
-
 .split-marker-wrap:hover .split-line,
 .split-marker-wrap.active .split-line {
   border-color: var(--color-primary);
 }
-
 .split-btn {
   width: 2rem;
   height: 2rem;
@@ -391,34 +277,28 @@
   color: var(--text-muted);
   font-size: 1rem;
 }
-
 .split-marker-wrap:hover .split-btn {
   background: rgba(99, 102, 241, 0.1);
   border-color: var(--color-primary);
   color: var(--color-primary);
   transform: scale(1.15);
 }
-
 .split-marker-wrap.active .split-btn {
   background: var(--color-primary);
   border-color: var(--color-primary);
   color: white;
 }
-
-/* ── Loading skeleton ──────────────────────────────────────────────── */
 .skeleton-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 1.25rem;
 }
-
 .skeleton-card {
   border-radius: 0.875rem;
   overflow: hidden;
   background: var(--bg-card);
   border: 2px solid var(--border-main);
 }
-
 .skeleton-thumb {
   width: 100%;
   padding-top: 141.4%;
@@ -431,7 +311,6 @@
   background-size: 400% 100%;
   animation: shimmer 1.6s infinite;
 }
-
 .skeleton-footer {
   padding: 0.625rem;
   height: 2rem;
@@ -444,17 +323,6 @@
   background-size: 400% 100%;
   animation: shimmer 1.6s infinite;
 }
-
-@keyframes shimmer {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
-}
-
-/* ── Empty / Upload prompt ─────────────────────────────────────────── */
 .gallery-empty {
   text-align: center;
   padding: 4rem 2rem;
@@ -462,8 +330,6 @@
   font-size: 0.9375rem;
   font-weight: 600;
 }
-
-/* ── Responsive ────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
   .page-grid,
   .skeleton-grid {
