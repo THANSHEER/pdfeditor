@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ToolPageComponent, DownloadFile } from '../../tool-page';
+import { ToolPageComponent, DownloadFile } from '../../tool-page.component';
 import { ProtectPdfService } from '../../../../services/tools/protect-pdf.service';
 
 @Component({

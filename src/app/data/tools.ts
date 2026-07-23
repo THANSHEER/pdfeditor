@@ -233,7 +233,7 @@ export const toolsData: Tool[] = [
     id: "sign-pdf",
     name: "Sign PDF",
     category: "security",
-    description: "Create your signature, sign your PDF and request people to sign.",
+    description: "Draw or upload a signature and place it on selected PDF pages.",
     icon: "pen-tool",
     keywords: ["sign", "signature", "e-sign", "contract"],
     tags: ["pdf", "secure", "sign", ...COMMON_TAGS],

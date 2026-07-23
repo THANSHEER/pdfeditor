@@ -17,7 +17,7 @@
   <div slot="settings" class="flex flex-col gap-5">
 
     <!-- Type toggle -->
-    <div class="flex rounded-xl border overflow-hidden" style="border-color: var(--border-main);">
+    <div class="flex rounded-xl border overflow-hidden border-main">
       <button type="button"
         (click)="watermarkType = 'text'"
         class="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-bold transition-all"
@@ -29,7 +29,7 @@
         </svg>
         Text
       </button>
-      <div class="w-px" style="background-color: var(--border-main);"></div>
+      <div class="w-px bg-main"></div>
       <button type="button"
         (click)="watermarkType = 'image'"
         class="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-bold transition-all"
@@ -46,39 +46,35 @@
     <!-- TEXT OPTIONS -->
     @if (watermarkType === 'text') {
       <div class="flex flex-col gap-2">
-        <label class="text-sm font-bold" style="color: var(--text-main);">Watermark Text</label>
+        <label class="text-sm font-bold">Watermark Text</label>
         <input type="text" [(ngModel)]="text" placeholder="e.g. CONFIDENTIAL"
-          class="px-4 py-3 rounded-xl border text-sm font-medium transition-colors focus:outline-none focus:border-indigo-500"
-          style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);" />
+          class="px-4 py-3 rounded-xl border text-sm font-medium transition-colors focus:outline-none focus:border-indigo-500 themed-input" />
       </div>
 
       <div class="grid grid-cols-2 gap-4">
         <div class="flex flex-col gap-2">
-          <label class="text-sm font-bold" style="color: var(--text-main);">Font Size <span class="font-normal opacity-60">(pt)</span></label>
+          <label class="text-sm font-bold">Font Size <span class="font-normal opacity-60">(pt)</span></label>
           <input type="number" [(ngModel)]="fontSize" min="8" max="200"
-            class="px-4 py-3 rounded-xl border text-sm transition-colors focus:outline-none focus:border-indigo-500"
-            style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);" />
+            class="px-4 py-3 rounded-xl border text-sm transition-colors focus:outline-none focus:border-indigo-500 themed-input" />
         </div>
         <div class="flex flex-col gap-2">
-          <label class="text-sm font-bold" style="color: var(--text-main);">Color</label>
+          <label class="text-sm font-bold">Color</label>
           <div class="flex items-center gap-3 h-[46px]">
             <input type="color" [(ngModel)]="color"
-              class="w-10 h-10 rounded-lg border cursor-pointer p-0.5"
-              style="border-color: var(--border-main); background-color: var(--bg-card);" />
-            <span class="text-sm font-mono" style="color: var(--text-muted);">{{ color }}</span>
+              class="w-10 h-10 rounded-lg border cursor-pointer p-0.5 border-main bg-card" />
+            <span class="text-sm font-mono text-muted">{{ color }}</span>
           </div>
         </div>
       </div>
 
       <!-- Live text preview -->
-      <div class="rounded-xl border flex items-center justify-center overflow-hidden py-5 px-4"
-        style="border-color: var(--border-main); background-color: var(--bg-surface); min-height: 72px;">
+      <div class="rounded-xl border flex items-center justify-center overflow-hidden py-5 px-4 border-main bg-surface watermark-preview-text">
         <span class="font-black select-none break-all text-center"
           [style.fontSize.px]="Math.min(fontSize, 28)"
           [style.color]="color"
           [style.opacity]="opacity"
           [style.transform]="'rotate(-' + rotation + 'deg)'"
-          style="display:inline-block; transition: all 0.2s;">
+          class="inline-block transition-all duration-200">
           {{ text || 'Preview' }}
         </span>
       </div>
@@ -87,15 +83,14 @@
     <!-- IMAGE OPTIONS -->
     @if (watermarkType === 'image') {
       <div class="flex flex-col gap-2">
-        <label class="text-sm font-bold" style="color: var(--text-main);">Watermark Image <span class="font-normal opacity-60">(PNG or JPEG)</span></label>
+        <label class="text-sm font-bold">Watermark Image <span class="font-normal opacity-60">(PNG or JPEG)</span></label>
         <label
-          class="flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-dashed cursor-pointer transition-colors hover:border-indigo-400"
-          style="border-color: var(--border-main); background-color: var(--bg-card);"
+          class="flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-dashed cursor-pointer transition-colors hover:border-indigo-400 border-main bg-card"
         >
-          <svg class="w-5 h-5 flex-shrink-0" style="color: var(--text-muted);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="w-5 h-5 flex-shrink-0 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
           </svg>
-          <span class="text-sm font-medium" style="color: var(--text-muted);">
+          <span class="text-sm font-medium text-muted">
             {{ imageFile ? imageFile.name : 'Click to upload PNG or JPEG' }}
           </span>
           <input type="file" accept="image/png,image/jpeg,image/jpg" class="hidden" (change)="onImagePicked($event)" />
@@ -104,20 +99,19 @@
 
       @if (imagePreviewUrl) {
         <div class="flex items-center gap-4">
-          <img [src]="imagePreviewUrl" class="w-16 h-16 object-contain rounded-xl border"
-            style="border-color: var(--border-main); background-color: var(--bg-surface);" />
+          <img [src]="imagePreviewUrl" class="w-16 h-16 object-contain rounded-xl border border-main bg-surface" />
           <div class="flex flex-col gap-1">
-            <span class="text-sm font-semibold" style="color: var(--text-main);">{{ imageFile?.name }}</span>
-            <span class="text-xs" style="color: var(--text-muted);">{{ imageType.toUpperCase() }} · Size: {{ imageSize }}% of page width</span>
+            <span class="text-sm font-semibold">{{ imageFile?.name }}</span>
+            <span class="text-xs text-muted">{{ imageType.toUpperCase() }} · Size: {{ imageSize }}% of page width</span>
           </div>
         </div>
       }
 
       <div class="flex flex-col gap-2">
-        <label class="text-sm font-bold" style="color: var(--text-main);">Image Size <span class="font-normal opacity-60">(% of page width — {{ imageSize }}%)</span></label>
+        <label class="text-sm font-bold">Image Size <span class="font-normal opacity-60">(% of page width — {{ imageSize }}%)</span></label>
         <input type="range" [(ngModel)]="imageSize" min="5" max="80" step="5"
           class="w-full h-2 rounded-full accent-indigo-600 cursor-pointer" />
-        <div class="flex justify-between text-xs" style="color: var(--text-muted);">
+        <div class="flex justify-between text-xs text-muted">
           <span>5%</span><span>Small</span><span>Medium</span><span>Large</span><span>80%</span>
         </div>
       </div>
@@ -126,18 +120,18 @@
     <!-- SHARED: Rotation + Opacity -->
     <div class="grid grid-cols-2 gap-4">
       <div class="flex flex-col gap-2">
-        <label class="text-sm font-bold" style="color: var(--text-main);">Rotation <span class="font-normal opacity-60">({{ rotation }}°)</span></label>
+        <label class="text-sm font-bold">Rotation <span class="font-normal opacity-60">({{ rotation }}°)</span></label>
         <input type="range" [(ngModel)]="rotation" min="-180" max="180" step="5"
           class="w-full h-2 rounded-full accent-indigo-600 cursor-pointer" />
-        <div class="flex justify-between text-xs" style="color: var(--text-muted);">
+        <div class="flex justify-between text-xs text-muted">
           <span>-180°</span><span>0°</span><span>180°</span>
         </div>
       </div>
       <div class="flex flex-col gap-2">
-        <label class="text-sm font-bold" style="color: var(--text-main);">Opacity <span class="font-normal opacity-60">({{ (opacity * 100).toFixed(0) }}%)</span></label>
+        <label class="text-sm font-bold">Opacity <span class="font-normal opacity-60">({{ (opacity * 100).toFixed(0) }}%)</span></label>
         <input type="range" [(ngModel)]="opacity" min="0.05" max="1" step="0.05"
           class="w-full h-2 rounded-full accent-indigo-600 cursor-pointer" />
-        <div class="flex justify-between text-xs" style="color: var(--text-muted);">
+        <div class="flex justify-between text-xs text-muted">
           <span>5%</span><span>50%</span><span>100%</span>
         </div>
       </div>
@@ -145,14 +139,13 @@
 
     <!-- COVERAGE PICKER -->
     <div class="flex flex-col gap-3">
-      <label class="text-sm font-bold" style="color: var(--text-main);">Position / Coverage</label>
+      <label class="text-sm font-bold">Position / Coverage</label>
 
       <div class="flex flex-col sm:flex-row items-start gap-4">
         <!-- Visual 3×3 position grid -->
-        <div class="relative flex-shrink-0" style="width: 108px; height: 140px;">
+        <div class="relative flex-shrink-0 watermark-position-grid">
           <!-- Page outline -->
-          <div class="absolute inset-x-6 inset-y-4 rounded border-2"
-            style="border-color: var(--border-main); background-color: var(--bg-surface);"></div>
+          <div class="absolute inset-x-6 inset-y-4 rounded border-2 border-main bg-surface"></div>
 
           @for (opt of coverageOptions; track opt.id) {
             <button type="button"
@@ -184,13 +177,12 @@
             </svg>
             Repeat / Tiled
           </button>
-          <p class="text-xs leading-relaxed" style="color: var(--text-muted);">
-            <strong style="color: var(--text-main);">Grid/Dot</strong> — single stamp at that corner, edge or centre.<br/>
-            <strong style="color: var(--text-main);">Repeat</strong> — watermark fills the entire page in a grid.
+          <p class="text-xs leading-relaxed text-muted">
+            <strong>Grid/Dot</strong> — single stamp at that corner, edge or centre.<br/>
+            <strong>Repeat</strong> — watermark fills the entire page in a grid.
           </p>
           @if (coverage !== 'tiled') {
-            <div class="text-xs px-3 py-2 rounded-lg font-medium"
-              style="background-color: rgba(99,102,241,0.08); color: #6366f1;">
+            <div class="text-xs px-3 py-2 rounded-lg font-medium indigo-badge">
               Selected: {{ coverage.replace('-', ' ') | titlecase }}
             </div>
           }

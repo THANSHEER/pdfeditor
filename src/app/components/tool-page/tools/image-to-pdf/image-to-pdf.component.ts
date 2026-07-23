@@ -3,14 +3,14 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PDFDocument } from 'pdf-lib';
-import { ToolPageComponent, DownloadFile } from '../../tool-page';
+import { ToolPageComponent, DownloadFile } from '../../tool-page.component';
 
 @Component({
   selector: 'app-image-to-pdf',
   standalone: true,
   imports: [FormsModule, RouterModule, ToolPageComponent],
   templateUrl: './image-to-pdf.component.html',
-  styles: []
+  styleUrl: "./image-to-pdf.component.scss"
 })
 
 export class ImageToPdfComponent {

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ToolPageComponent, DownloadFile } from '../../tool-page';
+import { ToolPageComponent, DownloadFile } from '../../tool-page.component';
 import { RedactPdfService, RedactionBox, RedactOptions } from '../../../../services/tools/redact-pdf.service';
 
 interface RedactionRule extends RedactionBox {

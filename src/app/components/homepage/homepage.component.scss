@@ -1,18 +1,7 @@
-/* Homepage Component Styles */
+@use '../../../styles/tokens' as *;
 
-/* Gradient text animation */
-@keyframes gradientShift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-/* Smooth transitions */
 :host {
   display: block;
-  background: var(--bg-main);
-  transition: background-color 300ms ease;
+  background: $bg-main;
+  transition: background-color 300ms $ease-smooth;
 }

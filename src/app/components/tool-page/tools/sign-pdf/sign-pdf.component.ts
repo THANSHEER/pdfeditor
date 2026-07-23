@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ToolPageComponent, DownloadFile } from '../../tool-page';
+import { ToolPageComponent, DownloadFile } from '../../tool-page.component';
 import { SignPdfService, SignaturePosition, SignOptions } from '../../../../services/tools/sign-pdf.service';
 
 type SignatureMode = 'draw' | 'type';

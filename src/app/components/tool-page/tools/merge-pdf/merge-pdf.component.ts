@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
-import { ToolPageComponent, DownloadFile } from '../../tool-page';
+import { ToolPageComponent, DownloadFile } from '../../tool-page.component';
 import { MergePdfService } from '../../../../services/tools/merge-pdf.service';
 
 /**
@@ -12,7 +12,7 @@ import { MergePdfService } from '../../../../services/tools/merge-pdf.service';
   standalone: true,
   imports: [FormsModule, ToolPageComponent],
   templateUrl: './merge-pdf.component.html',
-  styles: []
+  styleUrl: "./merge-pdf.component.scss"
 })
 export class MergePdfComponent {
   /** Array of selected PDF files to merge. */

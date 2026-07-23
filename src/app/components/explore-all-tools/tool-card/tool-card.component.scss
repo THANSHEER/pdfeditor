@@ -1,3 +1,5 @@
+@use '../../../../styles/tokens' as *;
+
 :host {
   display: block;
   min-width: 0;
@@ -16,23 +18,21 @@
   width: 100%;
   text-align: left;
   appearance: none;
-  border: 1px solid var(--border-main);
+  border: 1px solid $border-main;
   border-left: 4px solid var(--tool-color);
   border-radius: 8px;
-  background: var(--bg-card);
-  color: var(--text-main);
-  box-shadow: var(--shadow-card);
+  background: $bg-card;
+  color: $text-main;
+  box-shadow: $shadow-card;
   cursor: pointer;
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
-}
+  transition: border-color 0.2s $ease-smooth, box-shadow 0.2s $ease-smooth,
+    transform 0.2s $ease-smooth;
 
-.tool-card:hover {
-  border-color: color-mix(in srgb, var(--tool-color) 45%, var(--border-main));
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-2px);
+  &:hover {
+    border-color: color-mix(in srgb, var(--tool-color) 45%, $border-main);
+    box-shadow: $shadow-hover;
+    transform: translateY(-2px);
+  }
 }
 
 .tool-card-top,
@@ -57,11 +57,11 @@
   border-radius: 8px;
   background: rgba(var(--tool-color-rgb), 0.12);
   color: var(--tool-color);
-}
 
-.tool-icon svg {
-  width: 1.25rem;
-  height: 1.25rem;
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
 }
 
 .tool-badges {
@@ -80,21 +80,10 @@
   font-weight: 900;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-}
 
-.tool-badge.local {
-  background: color-mix(in srgb, var(--color-success) 12%, transparent);
-  color: var(--color-success);
-}
-
-.tool-badge.beta {
-  background: color-mix(in srgb, var(--color-warning) 14%, transparent);
-  color: var(--color-warning);
-}
-
-.tool-badge.soon {
-  background: color-mix(in srgb, var(--color-info) 14%, transparent);
-  color: var(--color-info);
+  &.local { background: color-mix(in srgb, var(--color-success) 12%, transparent); color: var(--color-success); }
+  &.beta  { background: color-mix(in srgb, var(--color-warning) 14%, transparent); color: var(--color-warning); }
+  &.soon  { background: color-mix(in srgb, var(--color-info)    14%, transparent); color: var(--color-info);    }
 }
 
 .tool-card-body {
@@ -105,14 +94,14 @@
 }
 
 .tool-title {
-  color: var(--text-main);
+  color: $text-main;
   font-size: 1rem;
   font-weight: 900;
   line-height: 1.2;
 }
 
 .tool-description {
-  color: var(--text-muted);
+  color: $text-muted;
   display: -webkit-box;
   overflow: hidden;
   -webkit-line-clamp: 3;

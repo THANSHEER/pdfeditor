@@ -1,0 +1,87 @@
+@use 'tokens' as *;
+
+// ─── Responsive breakpoints ───────────────────────────────────────────────────
+@mixin sm  { @media (min-width: 640px)  { @content; } }
+@mixin md  { @media (min-width: 768px)  { @content; } }
+@mixin lg  { @media (min-width: 1024px) { @content; } }
+@mixin xl  { @media (min-width: 1280px) { @content; } }
+@mixin xxl { @media (min-width: 1536px) { @content; } }
+
+@mixin max-sm { @media (max-width: 639px)  { @content; } }
+@mixin max-md { @media (max-width: 767px)  { @content; } }
+@mixin max-lg { @media (max-width: 1023px) { @content; } }
+
+// ─── Themed input ─────────────────────────────────────────────────────────────
+@mixin themed-input {
+  background-color: $bg-card;
+  border: 1px solid $border-main;
+  color: $text-main;
+  border-radius: 0.75rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  transition: border-color 0.2s $ease-smooth, box-shadow 0.2s $ease-smooth;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 18%, transparent);
+  }
+
+  &::placeholder {
+    color: $text-muted;
+    opacity: 0.7;
+  }
+}
+
+// ─── Themed select ────────────────────────────────────────────────────────────
+@mixin themed-select {
+  @include themed-input;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238899bb' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.5rem;
+}
+
+// ─── Card surface ────────────────────────────────────────────────────────────
+@mixin card {
+  background: $bg-card;
+  border: 1px solid $border-main;
+  border-radius: 1rem;
+  box-shadow: $shadow-card;
+}
+
+// ─── Smooth hover lift ───────────────────────────────────────────────────────
+@mixin hover-lift($y: -2px) {
+  transition: transform 0.25s $ease-spring, box-shadow 0.25s $ease-spring;
+
+  &:hover {
+    transform: translateY($y);
+    box-shadow: $shadow-hover;
+  }
+}
+
+// ─── Focus ring ──────────────────────────────────────────────────────────────
+@mixin focus-ring {
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 22%, transparent);
+    border-color: $primary;
+  }
+}
+
+// ─── Truncate text ───────────────────────────────────────────────────────────
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// ─── Section entrance animation ──────────────────────────────────────────────
+@mixin enter($delay: 0s) {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s $ease-spring $delay forwards;
+}

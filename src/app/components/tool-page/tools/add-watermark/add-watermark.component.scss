@@ -1,0 +1,7 @@
+@use '../../../../../styles/tokens' as *;
+
+:host { display: block; }
+
+.watermark-preview-text { min-height: 72px; }
+
+.watermark-position-grid { width: 108px; height: 140px; }

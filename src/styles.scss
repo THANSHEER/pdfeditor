@@ -1,69 +1,60 @@
+@use 'styles/tokens' as *;
+@use 'styles/mixins' as *;
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Tailwind CSS v3 - Standard setup with custom utilities */
-
-/* ============================================================
- *  PDF Toolkit — Global Design System
- *  Using Tailwind CSS v3 with custom CSS variables
- * ============================================================ */
-
-/* ============================================================
- *  CSS Custom Properties (theme-aware, toggled via .dark class)
- * ============================================================ */
+// ─── CSS Custom Properties ────────────────────────────────────────────────────
 :root {
-  /* Light Mode — cool blue-tinted whites & deep navy text */
-  --bg-main: #f0f4ff;
-  --bg-surface: #e6eaf8;
-  --bg-card: #ffffff;
-  --text-main: #0d1b3e;
-  --text-muted: #4a6080;
-  --border-main: #c5d0e8;
-  --glass-bg: rgba(240, 244, 255, 0.85);
-  --glass-border: rgba(197, 208, 232, 0.5);
-  --shadow-card: 0 2px 20px rgba(79, 70, 229, 0.07);
-  --shadow-soft: 0 16px 48px rgba(13, 27, 62, 0.08);
-  --shadow-hover: 0 20px 56px rgba(79, 70, 229, 0.14);
-  --color-primary: #4f46e5;
+  // Light mode
+  --bg-main:           #f0f4ff;
+  --bg-surface:        #e6eaf8;
+  --bg-card:           #ffffff;
+  --text-main:         #0d1b3e;
+  --text-muted:        #4a6080;
+  --border-main:       #c5d0e8;
+  --glass-bg:          rgba(240, 244, 255, 0.85);
+  --glass-border:      rgba(197, 208, 232, 0.5);
+  --shadow-card:       0 2px 20px rgba(79, 70, 229, 0.07);
+  --shadow-soft:       0 16px 48px rgba(13, 27, 62, 0.08);
+  --shadow-hover:      0 24px 56px rgba(79, 70, 229, 0.16);
+  --color-primary:     #4f46e5;
   --color-primary-hover: #3730a3;
-  --color-accent: #7c3aed;
-  --color-success: #059669;
-  --color-warning: #d97706;
-  --color-danger: #dc2626;
-  --color-info: #0284c7;
-
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --color-accent:      #7c3aed;
+  --color-success:     #059669;
+  --color-warning:     #d97706;
+  --color-danger:      #dc2626;
+  --color-info:        #0284c7;
+  --font-sans:         'Inter', system-ui, -apple-system, sans-serif;
   --color-brand-primary: #4f46e5;
-  --color-brand-accent: #7c3aed;
-  --color-brand-glow: #818cf8;
+  --color-brand-accent:  #7c3aed;
+  --color-brand-glow:    #818cf8;
 }
 
 .dark {
-  /* Dark Mode — deep navy-black with blue-purple glow */
-  --bg-main: #07090f;
-  --bg-surface: #0d1220;
-  --bg-card: #111827;
-  --text-main: #eef2ff;
-  --text-muted: #8899bb;
-  --border-main: #1e2d4d;
-  --glass-bg: rgba(13, 18, 32, 0.88);
-  --glass-border: rgba(30, 45, 77, 0.6);
-  --shadow-card: 0 2px 20px rgba(79, 70, 229, 0.12);
-  --shadow-soft: 0 18px 52px rgba(0, 0, 0, 0.28);
-  --shadow-hover: 0 20px 56px rgba(129, 140, 248, 0.18);
-  --color-primary: #818cf8;
+  // Dark mode
+  --bg-main:           #07090f;
+  --bg-surface:        #0d1220;
+  --bg-card:           #111827;
+  --text-main:         #eef2ff;
+  --text-muted:        #8899bb;
+  --border-main:       #1e2d4d;
+  --glass-bg:          rgba(13, 18, 32, 0.88);
+  --glass-border:      rgba(30, 45, 77, 0.6);
+  --shadow-card:       0 2px 20px rgba(79, 70, 229, 0.12);
+  --shadow-soft:       0 18px 52px rgba(0, 0, 0, 0.28);
+  --shadow-hover:      0 24px 56px rgba(129, 140, 248, 0.2);
+  --color-primary:     #818cf8;
   --color-primary-hover: #6366f1;
-  --color-accent: #a78bfa;
-  --color-success: #34d399;
-  --color-warning: #fbbf24;
-  --color-danger: #f87171;
-  --color-info: #38bdf8;
+  --color-accent:      #a78bfa;
+  --color-success:     #34d399;
+  --color-warning:     #fbbf24;
+  --color-danger:      #f87171;
+  --color-info:        #38bdf8;
 }
 
-/* ============================================================
- *  Base Reset & Body
- * ============================================================ */
+// ─── Base reset ───────────────────────────────────────────────────────────────
 *,
 *::before,
 *::after {
@@ -75,139 +66,148 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: var(--font-sans);
-  background-color: var(--bg-main);
-  color: var(--text-main);
+  font-family: $font-sans;
+  background-color: $bg-main;
+  color: $text-main;
   line-height: 1.6;
-  transition:
-    background-color 0.4s ease,
-    color 0.4s ease;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s $ease-smooth, color 0.4s $ease-smooth;
 }
 
-/* ============================================================
- *  Utility Classes
- * ============================================================ */
+// ─── Global utilities ─────────────────────────────────────────────────────────
 
-/* Glassmorphism */
 .glass {
-  background: var(--glass-bg);
+  background: $glass-bg;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
+  border: 1px solid $glass-border;
 }
 
-/* Gradient text utility */
 .text-gradient {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-accent)
-  );
+  background: linear-gradient(135deg, $primary, $accent);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .surface-panel {
-  background: var(--bg-card);
-  border: 1px solid var(--border-main);
-  box-shadow: var(--shadow-soft);
+  background: $bg-card;
+  border: 1px solid $border-main;
+  box-shadow: $shadow-soft;
 }
 
 .subtle-panel {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-main);
+  background: $bg-surface;
+  border: 1px solid $border-main;
 }
 
 .brand-mark {
-  background: linear-gradient(
-    135deg,
-    var(--color-brand-primary),
-    var(--color-info),
-    var(--color-brand-accent)
-  );
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-brand-primary), $info, var(--color-brand-accent));
+  color: #fff;
   box-shadow: 0 12px 28px rgba(79, 70, 229, 0.24);
 }
 
+// Themed form controls (used across tool pages)
+.themed-input {
+  @include themed-input;
+}
+
+.themed-select {
+  @include themed-select;
+}
+
+// ─── Focus ring ───────────────────────────────────────────────────────────────
 .focus-ring {
   outline: none;
+
+  &:focus-visible {
+    box-shadow: 0 0 0 4px color-mix(in srgb, $primary 22%, transparent);
+    border-color: $primary;
+  }
 }
 
-.focus-ring:focus-visible {
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 24%, transparent);
-  border-color: var(--color-primary);
-}
-
-/* Hide scrollbar */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
+// ─── Scrollbar ────────────────────────────────────────────────────────────────
 .no-scrollbar {
+  &::-webkit-scrollbar { display: none; }
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
-/* ============================================================
- *  Animations
- * ============================================================ */
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: $bg-surface; }
+::-webkit-scrollbar-thumb  { background: $border-main; border-radius: 99px; transition: background 0.2s; }
+::-webkit-scrollbar-thumb:hover { background: $primary; }
+
+// ─── Keyframe animations ──────────────────────────────────────────────────────
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
-.animate-fade-up {
-  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+@keyframes pulse-ring {
+  0%   { transform: scale(1);    opacity: 0.6; }
+  100% { transform: scale(1.5);  opacity: 0; }
 }
 
-.animate-fade-in {
-  animation: fade-in 0.5s ease forwards;
+// ─── Animation utility classes ────────────────────────────────────────────────
+.animate-fade-up    { animation: fadeUp   0.6s $ease-spring forwards; }
+.animate-fade-in    { animation: fadeIn   0.4s $ease-smooth forwards; }
+.animate-fade-down  { animation: fadeDown 0.4s $ease-spring forwards; }
+.animate-scale-in   { animation: scaleIn  0.35s $ease-spring forwards; }
+
+// Staggered entrance (add to children with nth-child selectors)
+@for $i from 1 through 12 {
+  .stagger-#{$i} { animation-delay: #{$i * 0.06}s; }
 }
 
-/* ============================================================
- *  Scrollbar
- * ============================================================ */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+// ─── Shimmer skeleton ─────────────────────────────────────────────────────────
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    $bg-surface 25%,
+    color-mix(in srgb, $bg-surface 60%, $bg-card) 50%,
+    $bg-surface 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
 }
-::-webkit-scrollbar-track {
-  background: var(--bg-surface);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--border-main);
-  border-radius: 99px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
+
+// ─── Page transitions ────────────────────────────────────────────────────────
+router-outlet + * {
+  animation: fadeUp 0.5s $ease-spring;
 }

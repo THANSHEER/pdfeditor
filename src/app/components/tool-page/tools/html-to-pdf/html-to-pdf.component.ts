@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [FormsModule, RouterModule],
   templateUrl: './html-to-pdf.component.html',
-  styles: []
+  styleUrl: "./html-to-pdf.component.scss"
 })
 export class HtmlToPdfComponent {
   htmlContent = '';

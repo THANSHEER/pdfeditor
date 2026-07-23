@@ -1,13 +1,13 @@
-:host {
-  display: block;
-}
+@use '../../../../styles/tokens' as *;
+
+:host { display: block; }
 
 .category-nav-wrap {
   position: sticky;
   top: 4rem;
   z-index: 30;
   width: 100%;
-  border-block: 1px solid var(--border-main);
+  border-block: 1px solid $border-main;
   background: var(--glass-bg);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -21,6 +21,12 @@
   gap: 0.6rem;
   overflow-x: auto;
   scroll-padding-inline: 1rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+
+  @media (min-width: 1160px) { justify-content: center; }
 }
 
 .category-pill {
@@ -30,57 +36,54 @@
   gap: 0.5rem;
   flex: 0 0 auto;
   padding: 0.45rem 0.55rem 0.45rem 0.8rem;
-  border: 1px solid var(--border-main);
+  border: 1px solid $border-main;
   border-radius: 8px;
-  background: var(--bg-card);
-  color: var(--text-muted);
+  background: $bg-card;
+  color: $text-muted;
   cursor: pointer;
   font: inherit;
   font-size: 0.86rem;
   font-weight: 850;
   white-space: nowrap;
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease;
-}
+  transition: background-color 0.2s $ease-smooth, border-color 0.2s $ease-smooth,
+    color 0.2s $ease-smooth, transform 0.2s $ease-smooth;
 
-.category-pill:hover {
-  border-color: color-mix(in srgb, var(--color-primary) 55%, var(--border-main));
-  color: var(--color-primary);
-}
+  &:hover {
+    border-color: color-mix(in srgb, $primary 55%, $border-main);
+    color: $primary;
+  }
 
-.category-pill.is-active {
-  border-color: var(--color-primary);
-  background: var(--color-primary);
-  color: #ffffff;
-  transform: translateY(-1px);
-  box-shadow: 0 10px 24px color-mix(in srgb, var(--color-primary) 22%, transparent);
+  &.is-active {
+    border-color: $primary;
+    background: $primary;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px color-mix(in srgb, $primary 22%, transparent);
+
+    strong {
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+    }
+  }
+
+  strong {
+    min-width: 1.65rem;
+    height: 1.65rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: $bg-surface;
+    color: $text-muted;
+    font-size: 0.72rem;
+    font-weight: 950;
+  }
 }
 
 .category-pill-icon {
   width: 1rem;
   height: 1rem;
   flex: 0 0 auto;
-}
-
-.category-pill strong {
-  min-width: 1.65rem;
-  height: 1.65rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  background: var(--bg-surface);
-  color: var(--text-muted);
-  font-size: 0.72rem;
-  font-weight: 950;
-}
-
-.category-pill.is-active strong {
-  background: rgba(255, 255, 255, 0.18);
-  color: #ffffff;
 }
 
 .category-fade {
@@ -90,28 +93,7 @@
   z-index: 1;
   width: 2.5rem;
   pointer-events: none;
-}
 
-.category-fade-left {
-  left: 0;
-  background: linear-gradient(to right, var(--glass-bg), transparent);
-}
-
-.category-fade-right {
-  right: 0;
-  background: linear-gradient(to left, var(--glass-bg), transparent);
-}
-
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-@media (min-width: 1160px) {
-  .category-scroll {
-    justify-content: center;
-  }
+  &-left  { left: 0;  background: linear-gradient(to right, var(--glass-bg), transparent); }
+  &-right { right: 0; background: linear-gradient(to left,  var(--glass-bg), transparent); }
 }

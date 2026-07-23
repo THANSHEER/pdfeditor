@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
-import { ToolPageComponent, DownloadFile } from '../../tool-page';
+import { ToolPageComponent, DownloadFile } from '../../tool-page.component';
 
 declare var pdfjsLib: any;
 
@@ -10,7 +10,7 @@ declare var pdfjsLib: any;
   standalone: true,
   imports: [FormsModule, ToolPageComponent],
   templateUrl: './pdf-to-image.component.html',
-  styles: []
+  styleUrl: "./pdf-to-image.component.scss"
 })
 
 export class PdfToImageComponent {

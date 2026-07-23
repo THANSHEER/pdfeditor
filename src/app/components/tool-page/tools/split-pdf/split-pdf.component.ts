@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ToolPageComponent, DownloadFile } from '../../tool-page';
+import { ToolPageComponent, DownloadFile } from '../../tool-page.component';
 import { PdfService } from '../../../../services/pdf.service';
 
 /**
@@ -17,7 +17,7 @@ export interface SplitGroup {
   standalone: true,
   imports: [CommonModule, FormsModule, ToolPageComponent],
   templateUrl: './split-pdf.component.html',
-  styles: []
+  styleUrl: "./split-pdf.component.scss"
 })
 export class SplitPdfComponent {
   /** Array of selected PDF files to split. */

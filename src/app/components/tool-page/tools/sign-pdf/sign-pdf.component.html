@@ -24,7 +24,7 @@
       </ul>
     </div>
 
-    <div class="flex rounded-2xl border overflow-hidden" style="border-color: var(--border-main);">
+    <div class="flex rounded-2xl border overflow-hidden border-main">
       <button
         type="button"
         (click)="setMode('draw')"
@@ -34,7 +34,7 @@
       >
         Draw signature
       </button>
-      <div class="w-px" style="background-color: var(--border-main);"></div>
+      <div class="w-px bg-main"></div>
       <button
         type="button"
         (click)="setMode('type')"
@@ -49,12 +49,11 @@
     @if (signatureMode === 'draw') {
       <div class="flex flex-col gap-3">
         <div class="flex items-center justify-between gap-3">
-          <label class="text-sm font-bold" style="color: var(--text-main);">Draw Signature</label>
+          <label class="text-sm font-bold">Draw Signature</label>
           <button
             type="button"
             (click)="clearSignaturePad()"
-            class="rounded-lg border px-3 py-2 text-xs font-bold transition-colors"
-            style="border-color: var(--border-main); color: var(--text-muted);"
+            class="rounded-lg border px-3 py-2 text-xs font-bold transition-colors border-main text-muted"
           >
             Clear pad
           </button>
@@ -81,14 +80,13 @@
     @if (signatureMode === 'type') {
       <div class="grid gap-4 lg:grid-cols-[1fr_18rem]">
         <div class="flex flex-col gap-2">
-          <label class="text-sm font-bold" style="color: var(--text-main);">Typed Name</label>
+          <label class="text-sm font-bold">Typed Name</label>
           <input
             type="text"
             [(ngModel)]="typedSignature"
             (input)="onTypedSignatureChange()"
             placeholder="Alex Morgan"
-            class="rounded-xl border px-4 py-3 text-sm"
-            style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);"
+            class="rounded-xl border px-4 py-3 text-sm themed-input"
           />
         </div>
         <div class="signature-preview surface-panel">
@@ -103,18 +101,17 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div class="flex flex-col gap-2">
-        <label class="text-sm font-bold" style="color: var(--text-main);">Page Range</label>
+        <label class="text-sm font-bold">Page Range</label>
         <input
           type="text"
           [(ngModel)]="pageRange"
           placeholder="all, 1-3, 2,4"
-          class="rounded-xl border px-4 py-3 text-sm"
-          style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);"
+          class="rounded-xl border px-4 py-3 text-sm themed-input"
         />
       </div>
 
       <div class="flex flex-col gap-2">
-        <label class="text-sm font-bold" style="color: var(--text-main);">Signature Width <span class="font-normal opacity-60">({{ widthPercent }}%)</span></label>
+        <label class="text-sm font-bold">Signature Width <span class="font-normal opacity-60">({{ widthPercent }}%)</span></label>
         <input
           type="range"
           [(ngModel)]="widthPercent"
@@ -127,7 +124,7 @@
     </div>
 
     <div class="flex flex-col gap-2">
-      <label class="text-sm font-bold" style="color: var(--text-main);">Signature Position</label>
+      <label class="text-sm font-bold">Signature Position</label>
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
         @for (option of positions; track option.id) {
           <button
@@ -146,41 +143,38 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div class="flex flex-col gap-2">
-        <label class="text-sm font-bold" style="color: var(--text-main);">Signature Label</label>
+        <label class="text-sm font-bold">Signature Label</label>
         <input
           type="text"
           [(ngModel)]="signatureLabel"
           placeholder="Signed by"
-          class="rounded-xl border px-4 py-3 text-sm"
-          style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);"
+          class="rounded-xl border px-4 py-3 text-sm themed-input"
         />
       </div>
 
       <div class="flex flex-col gap-2">
-        <label class="text-sm font-bold" style="color: var(--text-main);">Date Label</label>
+        <label class="text-sm font-bold">Date Label</label>
         <input
           type="text"
           [(ngModel)]="customDate"
           placeholder="Optional date text"
-          class="rounded-xl border px-4 py-3 text-sm"
-          style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);"
+          class="rounded-xl border px-4 py-3 text-sm themed-input"
         />
       </div>
     </div>
 
-    <label class="flex items-center gap-3 rounded-2xl border px-4 py-3" style="border-color: var(--border-main); background-color: var(--bg-card);">
+    <label class="flex items-center gap-3 rounded-2xl border px-4 py-3 border-main bg-card">
       <input type="checkbox" [(ngModel)]="includeDate" class="h-4 w-4" />
-      <span class="text-sm font-semibold" style="color: var(--text-main);">Add a date line under the signature</span>
+      <span class="text-sm font-semibold">Add a date line under the signature</span>
     </label>
 
     <div class="flex flex-col gap-2">
-      <label class="text-sm font-bold" style="color: var(--text-main);">Output File Name</label>
+      <label class="text-sm font-bold">Output File Name</label>
       <input
         type="text"
         [(ngModel)]="outputFileName"
         placeholder="signed-document.pdf"
-        class="rounded-xl border px-4 py-3 text-sm"
-        style="background-color: var(--bg-card); border-color: var(--border-main); color: var(--text-main);"
+        class="rounded-xl border px-4 py-3 text-sm themed-input"
       />
     </div>
   </div>

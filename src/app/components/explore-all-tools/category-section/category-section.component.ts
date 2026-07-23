@@ -10,52 +10,7 @@ import { Category } from "../../../data/categories";
   selector: "app-category-section",
   standalone: true,
   imports: [ToolCardComponent, SafeHtmlPipe],
-  template: `
-    @if (tools.length > 0) {
-      <section [id]="category.id" class="category-section surface-panel">
-        <div class="category-header">
-          <div class="category-title-row">
-            <div
-              class="category-icon"
-              [style.backgroundColor]="iconBg"
-              [style.color]="iconColor"
-            >
-              <svg
-                class="w-5 h-5 sm:w-6 sm:h-6"
-                [attr.viewBox]="getIconData(category.icon).viewBox"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                [innerHTML]="getIconData(category.icon).path | safeHtml"
-              ></svg>
-            </div>
-            <div>
-              <h2>{{ category.name }}</h2>
-              <p>{{ category.description }}</p>
-            </div>
-          </div>
-          <span class="tool-count">{{ tools.length }} tool{{ tools.length !== 1 ? "s" : "" }}</span>
-        </div>
-
-        <div class="tools-grid">
-          @for (tool of tools; track tool.id; let i = $index) {
-            <app-tool-card
-              [style.animation-delay]="i * 40 + 'ms'"
-              [title]="tool.name"
-              [description]="tool.description"
-              [icon]="tool.icon"
-              [status]="tool.status"
-              [isLocal]="tool.isLocal"
-              [route]="tool.route"
-              [category]="tool.category"
-            ></app-tool-card>
-          }
-        </div>
-      </section>
-    }
-  `,
+  templateUrl: './category-section.component.html',
   styleUrl: './category-section.component.scss',
 })
 export class CategorySectionComponent {

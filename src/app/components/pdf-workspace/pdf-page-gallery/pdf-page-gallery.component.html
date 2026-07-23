@@ -21,19 +21,19 @@
         <span class="toolbar-count">{{ pages.length }}</span>
         <!-- Remove mode info -->
         @if (mode === 'remove' && deletedCount > 0) {
-          <span class="toolbar-count" style="color:#ef4444;border-color:rgba(239,68,68,.25);background:rgba(239,68,68,.06)">
+          <span class="toolbar-count toolbar-count--danger">
             {{ deletedCount }} marked for removal
           </span>
         }
         <!-- Extract mode info -->
         @if (mode === 'extract' && selectedCount > 0) {
-          <span class="toolbar-count" style="color:var(--color-primary);border-color:rgba(99,102,241,.25);background:rgba(99,102,241,.06)">
+          <span class="toolbar-count toolbar-count--primary">
             {{ selectedCount }} selected
           </span>
         }
         <!-- Split mode info -->
         @if (mode === 'split' && splitPoints.size > 0) {
-          <span class="toolbar-count" style="color:var(--color-primary);border-color:rgba(99,102,241,.25);background:rgba(99,102,241,.06)">
+          <span class="toolbar-count toolbar-count--primary">
             {{ splitPoints.size + 1 }} parts
           </span>
         }
@@ -97,7 +97,7 @@
         }
         <!-- Split mode hint -->
         @if (mode === 'split') {
-          <span class="toolbar-label" style="font-size:0.75rem">Click ✂ between pages to set split points</span>
+          <span class="toolbar-label toolbar-label--hint">Click ✂ between pages to set split points</span>
         }
       </div>
     </div>
