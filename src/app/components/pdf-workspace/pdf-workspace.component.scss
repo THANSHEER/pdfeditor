@@ -1,0 +1,296 @@
+@use '../../../styles/tokens' as *;
+
+// ─── Layout ───────────────────────────────────────────────────────────────────
+.workspace-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: $bg-main;
+  color: $text-main;
+  overflow: hidden;
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+// ─── Top toolbar ──────────────────────────────────────────────────────────────
+.workspace-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 16px;
+  background-color: $bg-card;
+  border-bottom: 1px solid $border-main;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.topbar-left,
+.topbar-center,
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar-left  { flex: 1; }
+.topbar-center { flex: 1; justify-content: center; }
+.topbar-right  { flex: 1; justify-content: flex-end; }
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  color: $text-muted;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s $ease-smooth;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: $text-main;
+  }
+}
+
+.divider {
+  width: 1px;
+  height: 24px;
+  background-color: $border-main;
+}
+
+.doc-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $text-main;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.view-toggle {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  padding: 4px;
+  border: 1px solid $border-main;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 28px;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    color: $text-muted;
+    cursor: pointer;
+    transition: all 0.2s $ease-smooth;
+
+    &:hover { color: $text-main; }
+    &.active { background-color: rgba(255, 255, 255, 0.1); color: $text-main; }
+  }
+}
+
+.export-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: $primary;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s $ease-smooth;
+
+  &:hover:not(:disabled) { background-color: $primary-hover; }
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+
+// ─── Main layout ──────────────────────────────────────────────────────────────
+.workspace-main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+// ─── Sidebars ─────────────────────────────────────────────────────────────────
+.sidebar-left,
+.sidebar-right {
+  background-color: $bg-card;
+  width: 240px;
+  flex-shrink: 0;
+  overflow-y: auto;
+  border-right: 1px solid $border-main;
+}
+
+.sidebar-right {
+  border-right: none;
+  border-left: 1px solid $border-main;
+  padding: 16px;
+}
+
+.tool-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 4px;
+}
+
+.tool-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: $text-muted;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s $ease-smooth;
+
+  &:hover { background-color: rgba(255, 255, 255, 0.03); color: $text-main; }
+  &.active { background-color: rgba(139, 92, 246, 0.1); color: #a78bfa; }
+}
+
+// ─── Canvas area ──────────────────────────────────────────────────────────────
+.canvas-area {
+  flex: 1;
+  background-color: $bg-main;
+  position: relative;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.view-container {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.scrolling-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  overflow-y: auto;
+  padding-right: 12px;
+}
+
+.scrolling-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background-color: $bg-card;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid $border-main;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.scrolling-page-img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border: 1px solid $border-main;
+}
+
+.scrolling-page-label {
+  font-size: 0.85rem;
+  color: $text-muted;
+  font-weight: 500;
+}
+
+// ─── Upload zone ──────────────────────────────────────────────────────────────
+.upload-zone {
+  margin: auto;
+  width: 100%;
+  max-width: 500px;
+  border: 2px dashed $border-main;
+  border-radius: 16px;
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s $ease-smooth;
+  background-color: rgba(255, 255, 255, 0.02);
+
+  &:hover,
+  &.drag-over {
+    border-color: $primary;
+    background-color: rgba(99, 102, 241, 0.05);
+  }
+}
+
+.hidden-input { display: none; }
+
+.upload-icon-ring {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  color: $text-main;
+}
+
+.upload-icon  { width: 2rem;   height: 2rem;   }
+.loader-icon  { width: 2.5rem; height: 2.5rem; }
+
+.upload-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: $text-main;
+}
+
+.upload-hint {
+  font-size: 0.85rem;
+  color: $text-muted;
+}
+
+.loading-state {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: $text-muted;
+}
+
+.spin { animation: spin 1s linear infinite; }
+
+// ─── Context panel ────────────────────────────────────────────────────────────
+.context-panel {
+  .panel-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $text-muted;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .panel-desc {
+    font-size: 0.85rem;
+    color: $text-muted;
+    line-height: 1.5;
+  }
+}

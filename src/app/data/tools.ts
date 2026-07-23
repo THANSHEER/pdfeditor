@@ -226,19 +226,19 @@ export const toolsData: Tool[] = [
     keywords: ["redact", "black out", "hide info", "censor"],
     tags: ["pdf", "secure", "redact", ...COMMON_TAGS],
     route: "/tools/redact-pdf",
-    status: 'coming_soon',
+    status: 'ready',
     isLocal: true
   },
   {
     id: "sign-pdf",
     name: "Sign PDF",
     category: "security",
-    description: "Create your signature, sign your PDF and request people to sign.",
+    description: "Draw or upload a signature and place it on selected PDF pages.",
     icon: "pen-tool",
     keywords: ["sign", "signature", "e-sign", "contract"],
     tags: ["pdf", "secure", "sign", ...COMMON_TAGS],
     route: "/tools/sign-pdf",
-    status: 'coming_soon',
+    status: 'ready',
     isLocal: true
   }
 ];

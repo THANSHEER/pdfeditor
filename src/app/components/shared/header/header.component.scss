@@ -1,0 +1,8 @@
+@use '../../../../styles/tokens' as *;
+
+:host { display: block; }
+
+.site-header {
+  background-color: var(--glass-bg);
+  border-color: $border-main;
+}

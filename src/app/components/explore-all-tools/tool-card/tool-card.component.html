@@ -1,0 +1,30 @@
+<button
+  type="button"
+  class="tool-card focus-ring"
+  (click)="navigate()"
+  [style.--tool-color]="cardColor"
+  [style.--tool-color-rgb]="cardColorRgb"
+>
+  <span class="tool-card-top">
+    <span class="tool-icon" aria-hidden="true">
+      <svg [attr.viewBox]="getIconData(icon).viewBox" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" [innerHTML]="getIconData(icon).path | safeHtml"></svg>
+    </span>
+
+    <span class="tool-badges">
+      @if (isLocal) {
+        <span class="tool-badge local">Local</span>
+      }
+      @if (status === 'beta') {
+        <span class="tool-badge beta">Beta</span>
+      }
+      @if (status === 'coming_soon') {
+        <span class="tool-badge soon">Soon</span>
+      }
+    </span>
+  </span>
+
+  <span class="tool-card-body">
+    <span class="tool-title">{{ title }}</span>
+    <span class="tool-description">{{ description }}</span>
+  </span>
+</button>

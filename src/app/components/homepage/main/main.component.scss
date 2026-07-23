@@ -1,0 +1,9 @@
+@use '../../../../styles/tokens' as *;
+
+:host {
+  display: block;
+}
+
+.text-primary {
+  color: $primary;
+}

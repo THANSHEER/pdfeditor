@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4f46e5"/>
+      <stop offset=".5" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="pen" x1="10" y1="50" x2="44" y2="14" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#312e81"/>
+      <stop offset="1" stop-color="#4c1d95"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ── Icon mark (60×60 square) ── -->
+  <!-- Background tile -->
+  <rect x="0" y="0" width="60" height="60" rx="13" fill="url(#bg)"/>
+  <!-- Document body -->
+  <path d="M13 6h21l13 13v30a4 4 0 0 1-4 4H13a4 4 0 0 1-4-4V10a4 4 0 0 1 4-4z"
+        fill="white" fill-opacity=".95"/>
+  <!-- Corner fold -->
+  <path d="M34 6 L47 19 H37 a4 4 0 0 1-4-4 V6z" fill="white" fill-opacity=".38"/>
+  <!-- Pen body (diagonal parallelogram) -->
+  <path d="M15 38 L19 42 L40 21 L36 17 Z" fill="url(#pen)" fill-opacity=".9"/>
+  <!-- Pen tip -->
+  <path d="M15 38 L12 48 L21 42 Z" fill="#312e81" fill-opacity=".9"/>
+  <!-- Pen eraser -->
+  <path d="M36 17 L40 21 L44 17 L40 13 Z" fill="white" fill-opacity=".68"/>
+
+  <!-- ── Wordmark ── -->
+  <!-- "PDF" -->
+  <text x="73" y="28"
+        font-family="Inter, Segoe UI, Arial, sans-serif"
+        font-weight="800"
+        font-size="22"
+        letter-spacing="-0.5"
+        fill="#1e1b4b">PDF</text>
+  <!-- "Toolkit" -->
+  <text x="73" y="48"
+        font-family="Inter, Segoe UI, Arial, sans-serif"
+        font-weight="600"
+        font-size="15"
+        letter-spacing="1.5"
+        fill="#4f46e5">TOOLKIT</text>
+  <!-- Tagline underline accent -->
+  <rect x="73" y="52" width="84" height="2" rx="1" fill="url(#bg)" opacity=".5"/>
+</svg>

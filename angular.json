@@ -8,7 +8,7 @@
       "schematics": {
         "@schematics/angular:component": {
           "standalone": true,
-          "style": "css",
+          "style": "scss",
           "type": ""
         },
         "@schematics/angular:directive": {
@@ -46,7 +46,7 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
               "allowedCommonJsDependencies": [
                 "pako",
@@ -64,8 +64,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "10kB",
+                  "maximumError": "20kB"
                 }
               ],
               "outputHashing": "all"

@@ -1,0 +1,445 @@
+// ─── Shared Page-Tool Layout — used by all gallery-based tools ────────────────
+@use '../../../../styles/tokens' as *;
+@use '../../../../styles/mixins' as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: $bg-main;
+}
+
+// ─── Page shell ───────────────────────────────────────────────────────────────
+.page-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: $bg-main;
+}
+
+// ─── Top bar ──────────────────────────────────────────────────────────────────
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--glass-border);
+  flex-wrap: wrap;
+
+  @include max-md { padding: 0.75rem 1rem; }
+}
+
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: $text-muted;
+  text-decoration: none;
+  transition: color 0.2s $ease-smooth;
+
+  &:hover { color: $primary; }
+}
+
+.back-icon { width: 1rem; height: 1rem; }
+
+.top-divider {
+  width: 1px;
+  height: 1.25rem;
+  background: $border-main;
+
+  @include max-md { display: none; }
+}
+
+// ─── Tool badge ───────────────────────────────────────────────────────────────
+.tool-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badge-icon-wrap {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  // Per-tool color variants
+  &--purple { background: rgba(139, 92, 246, 0.12); color: #a78bfa; }
+  &--amber  { background: rgba(245, 158, 11, 0.12); color: #fbbf24; }
+  &--red    { background: rgba(239, 68, 68, 0.12);  color: #f87171; }
+  &--green  { background: rgba(16, 185, 129, 0.12); color: #34d399; }
+}
+
+.badge-icon { width: 1.1rem; height: 1.1rem; }
+
+.tool-name {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: $text-main;
+  letter-spacing: -0.02em;
+
+  @include max-md { display: none; }
+}
+
+// ─── Hint text ────────────────────────────────────────────────────────────────
+.hint-text {
+  font-size: 0.85rem;
+  color: $text-muted;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.hint-strong { color: $text-main; }
+
+// ─── Process button ───────────────────────────────────────────────────────────
+.process-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.5rem;
+  background: $primary;
+  color: white;
+  font-weight: 800;
+  font-size: 0.875rem;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.22s $ease-smooth;
+  box-shadow: 0 4px 14px -4px rgba(99, 102, 241, 0.4);
+  white-space: nowrap;
+
+  &:hover:not(:disabled) {
+    background: $primary-hover;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px -4px rgba(99, 102, 241, 0.5);
+  }
+
+  &:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+}
+
+.btn-icon { width: 1rem; height: 1rem; }
+
+.spin { animation: spin 1s linear infinite; }
+
+// ─── Content area ─────────────────────────────────────────────────────────────
+.content-area {
+  flex: 1;
+  overflow-y: auto;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 2rem 5rem;
+
+  @include max-md { padding: 1.25rem 1rem 4rem; }
+}
+
+// ─── Upload zone ──────────────────────────────────────────────────────────────
+.upload-zone {
+  border: 2px dashed $border-main;
+  border-radius: 1.5rem;
+  background: $bg-surface;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s $ease-smooth;
+  text-align: center;
+  padding: 3rem 2rem;
+  margin-bottom: 2rem;
+
+  &:hover,
+  &.drag-over {
+    border-color: $primary;
+    background: rgba(99, 102, 241, 0.03);
+  }
+
+  &.drag-over { transform: scale(1.01); }
+
+  &:hover .upload-icon-ring { transform: scale(1.1); }
+}
+
+.upload-icon-ring {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  color: $primary;
+  transition: transform 0.2s $ease-smooth;
+}
+
+.upload-icon { width: 2rem; height: 2rem; }
+
+.upload-title {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: $text-main;
+  margin-bottom: 0.5rem;
+}
+
+.upload-hint {
+  font-size: 0.875rem;
+  color: $text-muted;
+  font-weight: 500;
+}
+
+.hidden-input { display: none; }
+
+// ─── File info bar ────────────────────────────────────────────────────────────
+.file-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem 1.25rem;
+  background: $bg-card;
+  border: 1px solid $border-main;
+  border-radius: 1rem;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.file-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.file-icon-wrap {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.5rem;
+  background: rgba(99, 102, 241, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $primary;
+  flex-shrink: 0;
+}
+
+.file-icon { width: 1.1rem; height: 1.1rem; }
+
+.file-info-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: $text-main;
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @include max-sm { max-width: 160px; }
+}
+
+.file-info-size {
+  font-size: 0.75rem;
+  color: $text-muted;
+  font-weight: 500;
+}
+
+.change-btn {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: $primary;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s $ease-smooth;
+  white-space: nowrap;
+
+  &:hover { background: rgba(99, 102, 241, 0.15); }
+}
+
+// ─── Error ────────────────────────────────────────────────────────────────────
+.error-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 0.875rem;
+  color: #ef4444;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+  animation: fadeIn 0.3s $ease-smooth;
+}
+
+.error-icon { width: 1.2rem; height: 1.2rem; flex-shrink: 0; }
+
+// ─── Download panel ───────────────────────────────────────────────────────────
+.download-panel {
+  background: $bg-card;
+  border: 1px solid $border-main;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  margin-top: 2rem;
+  animation: scaleIn 0.35s $ease-spring;
+}
+
+.download-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(16, 185, 129, 0.06);
+  border-bottom: 1px solid $border-main;
+  font-weight: 800;
+  font-size: 0.9375rem;
+  color: #10b981;
+}
+
+.success-icon { width: 1.3rem; height: 1.3rem; flex-shrink: 0; }
+
+.download-list { padding: 1rem 1.5rem; }
+
+.download-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid $border-main;
+
+  &:last-child { border-bottom: none; }
+}
+
+.dl-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $text-main;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: $primary;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s $ease-smooth;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  &:hover { background: rgba(99, 102, 241, 0.15); }
+}
+
+.dl-icon { width: 0.95rem; height: 0.95rem; }
+
+.dl-actions {
+  display: flex;
+  gap: 1rem;
+  padding: 0 1.5rem 1.5rem;
+
+  @include max-sm { flex-direction: column; }
+}
+
+.dl-zip-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: #10b981;
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s $ease-smooth;
+
+  &:hover:not(:disabled) { background: #059669; }
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+}
+
+// ─── Settings panel ───────────────────────────────────────────────────────────
+.settings-panel {
+  background: $bg-card;
+  border: 1px solid $border-main;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.settings-title {
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: $text-main;
+  margin-bottom: 0.875rem;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.settings-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $text-muted;
+  white-space: nowrap;
+}
+
+.settings-input {
+  padding: 0.5rem 0.875rem;
+  border: 1px solid $border-main;
+  border-radius: 0.625rem;
+  background: $bg-surface;
+  color: $text-main;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: border-color 0.2s $ease-smooth;
+  outline: none;
+  max-width: 260px;
+  width: 100%;
+
+  &:focus { border-color: $primary; }
+
+  &--sm { max-width: 80px; }
+}

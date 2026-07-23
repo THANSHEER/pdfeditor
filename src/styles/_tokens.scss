@@ -1,0 +1,37 @@
+// Design tokens — SCSS variables that mirror the CSS custom properties.
+// Use these inside component SCSS files for compile-time access.
+
+$primary:        var(--color-primary);
+$primary-hover:  var(--color-primary-hover);
+$accent:         var(--color-accent);
+$success:        var(--color-success);
+$warning:        var(--color-warning);
+$danger:         var(--color-danger);
+$info:           var(--color-info);
+
+$bg-main:        var(--bg-main);
+$bg-surface:     var(--bg-surface);
+$bg-card:        var(--bg-card);
+
+$text-main:      var(--text-main);
+$text-muted:     var(--text-muted);
+
+$border-main:    var(--border-main);
+$font-sans:      var(--font-sans);
+$font-mono:      var(--font-mono);
+$glass-bg:       var(--glass-bg);
+$glass-border:   var(--glass-border);
+
+$shadow-card:    var(--shadow-card);
+$shadow-soft:    var(--shadow-soft);
+$shadow-hover:   var(--shadow-hover);
+
+// Easing curves
+$ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+$ease-spring:    cubic-bezier(0.22, 1, 0.36, 1);
+$ease-smooth:    cubic-bezier(0.4, 0, 0.2, 1);
+
+// Transition shorthands
+$transition-base:   all 0.2s $ease-smooth;
+$transition-slow:   all 0.4s $ease-smooth;
+$transition-bounce: all 0.3s $ease-spring;

@@ -1,19 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
   <defs>
-    <linearGradient id="favicon_grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#2563eb;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    <linearGradient id="bg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4f46e5"/>
+      <stop offset=".5" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="pen" x1="6" y1="25" x2="22" y2="8" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#312e81"/>
+      <stop offset="1" stop-color="#4c1d95"/>
     </linearGradient>
   </defs>
-  <!-- Background with gradient -->
-  <rect width="32" height="32" rx="8" fill="url(#favicon_grad)" />
-  <!-- White icon on top -->
-  <g transform="translate(4, 4) scale(1)">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-      <polyline points="14 2 14 8 20 8"></polyline>
-      <path d="m9 15 2 2 4-4"></path>
-    </svg>
-  </g>
+  <!-- Rounded square background -->
+  <rect width="32" height="32" rx="7" fill="url(#bg)"/>
+  <!-- Document: white paper body with folded top-right corner -->
+  <path d="M7 3h11l7 7v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" fill="white" fill-opacity=".95"/>
+  <!-- Corner fold overlay -->
+  <path d="M18 3 L25 10 H20 a2 2 0 0 1-2-2 V3z" fill="white" fill-opacity=".38"/>
+  <!-- Pen body: diagonal parallelogram (original geometry, no library) -->
+  <path d="M8 20 L10 22 L21 11 L19 9 Z" fill="url(#pen)" fill-opacity=".9"/>
+  <!-- Pen tip: small triangle at lower-left -->
+  <path d="M8 20 L6 25 L10 22 Z" fill="#312e81" fill-opacity=".9"/>
+  <!-- Pen eraser: small rotated square at upper-right -->
+  <path d="M19 9 L21 11 L23 9 L21 7 Z" fill="white" fill-opacity=".68"/>
 </svg>

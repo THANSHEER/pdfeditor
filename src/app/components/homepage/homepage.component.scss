@@ -1,0 +1,7 @@
+@use '../../../styles/tokens' as *;
+
+:host {
+  display: block;
+  background: $bg-main;
+  transition: background-color 300ms $ease-smooth;
+}
