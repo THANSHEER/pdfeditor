@@ -16,16 +16,17 @@
   background-color: $bg-card;
   border: 1px solid $border-main;
   color: $text-main;
-  border-radius: 0.75rem;
-  padding: 0.625rem 1rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.875rem;
   font-size: 0.875rem;
-  transition: border-color 0.2s $ease-smooth, box-shadow 0.2s $ease-smooth;
+  font-weight: 500;
+  transition: border-color 0.15s $ease-smooth, box-shadow 0.15s $ease-smooth;
   width: 100%;
 
   &:focus {
     outline: none;
     border-color: $primary;
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 18%, transparent);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 20%, transparent);
   }
 
   &::placeholder {
@@ -39,27 +40,26 @@
   @include themed-input;
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238899bb' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
-  padding-right: 2.5rem;
+  padding-right: 2.25rem;
 }
 
 // ─── Card surface ────────────────────────────────────────────────────────────
 @mixin card {
   background: $bg-card;
   border: 1px solid $border-main;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   box-shadow: $shadow-card;
 }
 
-// ─── Smooth hover lift ───────────────────────────────────────────────────────
-@mixin hover-lift($y: -2px) {
-  transition: transform 0.25s $ease-spring, box-shadow 0.25s $ease-spring;
+// ─── Smooth hover border (clean, no bouncy lift) ────────────────────────────
+@mixin hover-lift($y: 0px) {
+  transition: border-color 0.15s $ease-smooth, background-color 0.15s $ease-smooth, box-shadow 0.15s $ease-smooth;
 
   &:hover {
-    transform: translateY($y);
-    box-shadow: $shadow-hover;
+    border-color: color-mix(in srgb, $text-main 30%, $border-main);
   }
 }
 
@@ -67,8 +67,7 @@
 @mixin focus-ring {
   &:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 22%, transparent);
-    border-color: $primary;
+    box-shadow: 0 0 0 2px $primary;
   }
 }
 
@@ -82,6 +81,7 @@
 // ─── Section entrance animation ──────────────────────────────────────────────
 @mixin enter($delay: 0s) {
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.6s $ease-spring $delay forwards;
+  transform: translateY(10px);
+  animation: fadeUp 0.3s $ease-smooth $delay forwards;
 }
+

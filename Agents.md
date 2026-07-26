@@ -9,7 +9,7 @@ Provide this document to any AI coding assistant before asking it to implement f
 PDF Toolkit is a **100 % client-side** Angular 21 web application. No file ever leaves the browser. All PDF manipulation runs via `pdf-lib`, `pdf.js`, and `qpdf-wasm` directly in the user's browser tab.
 
 - **Live URL**: hosted on Cloudflare Pages  
-- **Repo**: `github.com/geekstashdev/pdfeditor`  
+- **Repo**: `github.com/THANSHEER/pdfeditor`  
 - **License**: AGPL-3.0
 
 ---

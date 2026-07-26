@@ -1,30 +1,31 @@
-<div class="min-h-screen bg-main transition-colors duration-300">
+<div class="min-h-screen bg-main transition-colors duration-200">
   <main class="flex-1">
     <div class="bg-main">
       <app-main></app-main>
     </div>
 
-    <div class="max-w-7xl mx-auto mt-6 sm:mt-10 mb-8 sm:mb-12 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto mt-6 sm:mt-8 mb-8 sm:mb-12 px-4 sm:px-6">
       <app-privacy-banner></app-privacy-banner>
     </div>
 
-    <section class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 text-center bg-surface transition-colors duration-300">
+    <section class="py-12 sm:py-16 px-4 sm:px-6 text-center bg-surface border-t border-b border-main transition-colors duration-200">
       <div class="max-w-3xl mx-auto">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-main mb-4">
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-main mb-3">
           Explore all PDF tools
         </h2>
-        <p class="text-base sm:text-lg text-muted font-medium mb-8">
-          Merge, split, compress, convert, and secure PDFs — organized by category.
+        <p class="text-sm sm:text-base text-muted font-normal mb-6">
+          Merge, split, compress, convert, organize, and secure your PDFs — organized by category.
         </p>
         <a routerLink="/tools"
-          class="inline-flex w-full sm:w-auto justify-center items-center gap-3 px-7 sm:px-10 py-4 rounded-xl bg-indigo-600 text-white font-bold text-base sm:text-lg hover:bg-indigo-700 transition-colors duration-200">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          class="inline-flex w-full sm:w-auto justify-center items-center gap-2.5 px-8 py-3.5 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 font-semibold text-sm hover:opacity-90 transition-opacity duration-150 focus-ring">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
           </svg>
-          Explore all tools
+          Explore All Tools
         </a>
       </div>
     </section>
   </main>
 </div>
+

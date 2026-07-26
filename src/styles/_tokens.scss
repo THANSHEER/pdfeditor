@@ -26,12 +26,13 @@ $shadow-card:    var(--shadow-card);
 $shadow-soft:    var(--shadow-soft);
 $shadow-hover:   var(--shadow-hover);
 
-// Easing curves
+// Easing curves - subtle and crisp
 $ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
-$ease-spring:    cubic-bezier(0.22, 1, 0.36, 1);
-$ease-smooth:    cubic-bezier(0.4, 0, 0.2, 1);
+$ease-spring:    cubic-bezier(0.2, 0.8, 0.2, 1);
+$ease-smooth:    cubic-bezier(0.16, 1, 0.3, 1);
 
 // Transition shorthands
-$transition-base:   all 0.2s $ease-smooth;
-$transition-slow:   all 0.4s $ease-smooth;
-$transition-bounce: all 0.3s $ease-spring;
+$transition-base:   all 0.15s $ease-smooth;
+$transition-slow:   all 0.25s $ease-smooth;
+$transition-bounce: all 0.2s $ease-smooth;
+

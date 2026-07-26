@@ -6,7 +6,7 @@ No uploads. No accounts. No servers. Every file stays on your device.
 
 ![PDF Toolkit Banner](resources/banner.png)
 
-[![CI](https://github.com/geekstashdev/pdfeditor/actions/workflows/ci.yml/badge.svg)](https://github.com/geekstashdev/pdfeditor/actions/workflows/ci.yml)
+[![CI](https://github.com/THANSHEER/pdfeditor/actions/workflows/ci.yml/badge.svg)](https://github.com/THANSHEER/pdfeditor/actions/workflows/ci.yml)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
 [![Angular](https://img.shields.io/badge/Angular-21-red)](https://angular.dev)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8)](https://tailwindcss.com)
@@ -100,7 +100,7 @@ PDF Toolkit is a fully client-side web application built with **Angular 21** and
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/geekstashdev/pdfeditor.git
+git clone https://github.com/THANSHEER/pdfeditor.git
 cd pdfeditor
 
 # 2. Install dependencies
@@ -236,7 +236,7 @@ For major changes (new tool category, architectural changes), open an issue firs
 
 - [Report a bug](.github/ISSUE_TEMPLATE/bug_report.yml)
 - [Request a feature](.github/ISSUE_TEMPLATE/feature_request.yml)
-- [Open issues](https://github.com/geekstashdev/pdfeditor/issues)
+- [Open issues](https://github.com/THANSHEER/pdfeditor/issues)
 
 ---
 

@@ -1,55 +1,42 @@
 <header
-  class="site-header sticky top-0 z-50 border-b border-main backdrop-blur-md transition-all duration-500"
+  class="site-header sticky top-0 z-50 border-b border-main bg-main/80 backdrop-blur-md transition-colors duration-200"
 >
   <div
-    class="w-full max-w-7xl mx-auto px-6 h-16 flex justify-between items-center"
+    class="w-full max-w-7xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center"
   >
     <!-- Logo -->
     <a
       routerLink="/"
-      class="flex items-center gap-3 no-underline hover:scale-105 transition-transform"
+      class="flex items-center gap-3 no-underline group"
     >
-      <div class="relative flex items-center justify-center">
-        <div
-          class="absolute inset-0 rounded-xl bg-gradient-to-br from-indigo-500 via-blue-500 to-violet-600 blur-lg opacity-40 animate-pulse"
-        ></div>
-        <div
-          class="relative p-2 rounded-xl bg-gradient-to-br from-indigo-600 via-blue-600 to-violet-600 shadow-lg border border-white/20"
+      <div class="p-2 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 transition-opacity group-hover:opacity-90 flex items-center justify-center">
+        <!-- PDF Toolkit logomark -->
+        <svg
+          class="w-4 h-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         >
-          <!-- PDF Toolkit logomark: document + pen — original geometry -->
-          <svg
-            class="w-5 h-5"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="white"
-            stroke-width="1.6"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <!-- Document body with folded corner -->
-            <path d="M4 3h10l6 6v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
-            <path d="M14 3v6h6" />
-            <!-- Pen body (diagonal parallelogram) -->
-            <path d="M7 17 L9 19 L17 11 L15 9 Z" fill="white" fill-opacity=".25" stroke="white" />
-            <!-- Pen tip -->
-            <path d="M7 17 L5 22 L10 20 Z" fill="white" fill-opacity=".25" stroke="white" />
-            <!-- Pen eraser (small rotated square) -->
-            <path d="M15 9 L17 11 L19 9 L17 7 Z" fill="white" fill-opacity=".4" stroke="white" stroke-width="1" />
-          </svg>
-        </div>
+          <path d="M4 3h10l6 6v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
+          <path d="M14 3v6h6" />
+          <path d="M7 17 L9 19 L17 11 L15 9 Z" fill="currentColor" fill-opacity="0.2" />
+        </svg>
       </div>
-      <div class="hidden sm:flex flex-col leading-none">
-        <span class="font-black text-base tracking-tight text-main">PDF Toolkit</span>
-        <span class="text-[10px] font-semibold tracking-widest uppercase text-muted opacity-60">Free &amp; Open Source</span>
+      <div class="flex flex-col leading-none">
+        <span class="font-bold text-base tracking-tight text-main">PDF Toolkit</span>
+        <span class="text-[10px] font-medium tracking-wider uppercase text-muted">100% Client-Side</span>
       </div>
     </a>
 
     <!-- Navigation -->
-    <nav class="flex items-center gap-2 sm:gap-4">
+    <nav class="flex items-center gap-3">
       <!-- All Tools link -->
       <a
         routerLink="/tools"
-        class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold text-muted hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-500/8 transition-all duration-200 uppercase tracking-widest"
+        class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-muted hover:text-main hover:bg-surface transition-colors duration-150 uppercase tracking-wider"
       >
         All Tools
       </a>
@@ -57,12 +44,13 @@
       <!-- Theme Toggle -->
       <button
         (click)="toggleTheme()"
+        [attr.aria-label]="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
         [title]="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
-        class="p-2.5 rounded-xl bg-surface border border-main hover:border-indigo-400 hover:text-indigo-500 dark:hover:border-indigo-500 dark:hover:text-indigo-400 text-main transition-all duration-200 flex items-center justify-center hover:scale-110 active:scale-95 shadow-sm"
+        class="p-2 rounded-lg bg-surface border border-main text-muted hover:text-main hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors duration-150 flex items-center justify-center focus-ring"
       >
         @if (isDark) {
           <svg
-            class="w-5 h-5"
+            class="w-4 h-4"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -83,7 +71,7 @@
         }
         @if (!isDark) {
           <svg
-            class="w-5 h-5"
+            class="w-4 h-4"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -100,26 +88,24 @@
 
       <!-- GitHub -->
       <a
-        href="https://github.com/geekstashdev/pdfeditor"
+        href="https://github.com/THANSHEER/pdfeditor"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 text-white font-bold text-xs hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-500/40 transition-all duration-300 border border-white/10"
+        aria-label="Star on GitHub"
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 font-semibold text-xs hover:opacity-90 transition-opacity duration-150 focus-ring"
       >
         <svg
-          class="w-4 h-4"
+          class="w-3.5 h-3.5 text-amber-400 fill-amber-400"
           viewBox="0 0 24 24"
-          fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          stroke-width="1"
         >
-          <path
-            d="M15 22v-4a4.8 4.8 0 0 0-1-3.02c3.62-.3 7.5-1.89 7.5-8.38a4.8 4.8 0 0 0-1.5-3.5 4.8 4.8 0 0 0 .1-3.4s-1.2-.38-3.9 1.5a13.3 13.3 0 0 0-7 0C6.2 2.5 5 2.88 5 2.88a4.8 4.8 0 0 0 .1 3.4 4.8 4.8 0 0 0-1.5 3.5c0 6.47 3.88 8.08 7.5 8.38a4.8 4.8 0 0 0-1 2.92v4.1"
-          />
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
         </svg>
-        <span class="hidden md:inline">GitHub</span>
+        <span>Star on GitHub</span>
       </a>
     </nav>
   </div>
 </header>
+
+

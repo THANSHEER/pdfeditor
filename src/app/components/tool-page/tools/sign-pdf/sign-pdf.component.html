@@ -2,8 +2,6 @@
   title="Sign PDF"
   description="Add a typed or hand-drawn signature and place it on selected pages."
   icon="pen-tool"
-  iconBg="rgba(79, 70, 229, 0.1)"
-  iconColor="#4f46e5"
   [allowMultiple]="false"
   actionLabel="Sign PDF"
   actionIcon="pen-tool"
@@ -14,51 +12,48 @@
   (filesChanged)="onFilesChanged($event)"
   (process)="onProcess()"
 >
-  <div slot="settings" class="flex flex-col gap-6">
-    <div class="rounded-2xl border border-indigo-200/70 bg-indigo-50/70 dark:border-indigo-800/40 dark:bg-indigo-900/10 p-4 text-sm text-indigo-900 dark:text-indigo-200">
-      <p class="font-semibold mb-1">Signing workflow</p>
-      <ul class="list-disc list-inside space-y-1 text-xs leading-relaxed text-indigo-800 dark:text-indigo-300">
+  <div slot="settings" class="flex flex-col gap-5">
+    <div class="rounded-lg border border-main bg-surface p-4 text-xs text-muted leading-relaxed">
+      <p class="font-semibold text-main mb-1">Signing Workflow</p>
+      <ul class="list-disc list-inside space-y-1">
         <li>Draw a signature or type one and convert it to a transparent PNG</li>
         <li>Choose where the signature should sit on the page</li>
-        <li>All processing stays in the browser</li>
+        <li>All processing stays 100% in your browser</li>
       </ul>
     </div>
 
-    <div class="flex rounded-2xl border overflow-hidden border-main">
+    <div class="flex rounded-lg border overflow-hidden border-main bg-card">
       <button
         type="button"
         (click)="setMode('draw')"
-        class="flex-1 px-4 py-3 text-sm font-bold transition-colors"
-        [style.backgroundColor]="signatureMode === 'draw' ? 'rgba(79,70,229,0.12)' : 'var(--bg-card)'"
-        [style.color]="signatureMode === 'draw' ? '#4f46e5' : 'var(--text-muted)'"
+        class="flex-1 px-4 py-2.5 text-xs font-semibold transition-colors focus-ring"
+        [ngClass]="signatureMode === 'draw' ? 'bg-surface text-main font-bold border-r border-main' : 'text-muted'"
       >
         Draw signature
       </button>
-      <div class="w-px bg-main"></div>
       <button
         type="button"
         (click)="setMode('type')"
-        class="flex-1 px-4 py-3 text-sm font-bold transition-colors"
-        [style.backgroundColor]="signatureMode === 'type' ? 'rgba(79,70,229,0.12)' : 'var(--bg-card)'"
-        [style.color]="signatureMode === 'type' ? '#4f46e5' : 'var(--text-muted)'"
+        class="flex-1 px-4 py-2.5 text-xs font-semibold transition-colors focus-ring"
+        [ngClass]="signatureMode === 'type' ? 'bg-surface text-main font-bold' : 'text-muted'"
       >
         Type signature
       </button>
     </div>
 
     @if (signatureMode === 'draw') {
-      <div class="flex flex-col gap-3">
+      <div class="flex flex-col gap-2">
         <div class="flex items-center justify-between gap-3">
-          <label class="text-sm font-bold">Draw Signature</label>
+          <label class="text-xs font-semibold text-muted uppercase tracking-wider">Draw Signature</label>
           <button
             type="button"
             (click)="clearSignaturePad()"
-            class="rounded-lg border px-3 py-2 text-xs font-bold transition-colors border-main text-muted"
+            class="rounded-md border px-2.5 py-1 text-xs font-semibold border-main bg-card text-muted hover:text-main focus-ring"
           >
             Clear pad
           </button>
         </div>
-        <div class="signature-pad-wrap">
+        <div class="signature-pad-wrap border border-main rounded-lg bg-card overflow-hidden">
           <canvas
             #signatureCanvas
             class="signature-pad"
@@ -71,47 +66,47 @@
             (pointerleave)="onSignaturePointerUp($event)"
           ></canvas>
           @if (!hasInk) {
-            <div class="signature-placeholder">Draw your signature here</div>
+            <div class="signature-placeholder text-muted">Draw your signature here</div>
           }
         </div>
       </div>
     }
 
     @if (signatureMode === 'type') {
-      <div class="grid gap-4 lg:grid-cols-[1fr_18rem]">
-        <div class="flex flex-col gap-2">
-          <label class="text-sm font-bold">Typed Name</label>
+      <div class="grid gap-3 sm:grid-cols-[1fr_16rem]">
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs font-semibold text-muted uppercase tracking-wider">Typed Name</label>
           <input
             type="text"
             [(ngModel)]="typedSignature"
             (input)="onTypedSignatureChange()"
             placeholder="Alex Morgan"
-            class="rounded-xl border px-4 py-3 text-sm themed-input"
+            class="rounded-lg border border-main px-3.5 py-2 text-sm themed-input"
           />
         </div>
-        <div class="signature-preview surface-panel">
+        <div class="signature-preview surface-panel p-3 border border-main rounded-lg flex items-center justify-center">
           @if (typedPreviewUrl) {
             <img [src]="typedPreviewUrl" alt="Signature preview" />
           } @else {
-            <span>Type a name to preview the signature.</span>
+            <span class="text-xs text-muted">Type a name to preview signature.</span>
           }
         </div>
       </div>
     }
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="flex flex-col gap-2">
-        <label class="text-sm font-bold">Page Range</label>
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-semibold text-muted uppercase tracking-wider">Page Range</label>
         <input
           type="text"
           [(ngModel)]="pageRange"
           placeholder="all, 1-3, 2,4"
-          class="rounded-xl border px-4 py-3 text-sm themed-input"
+          class="rounded-lg border border-main px-3.5 py-2 text-sm themed-input"
         />
       </div>
 
-      <div class="flex flex-col gap-2">
-        <label class="text-sm font-bold">Signature Width <span class="font-normal opacity-60">({{ widthPercent }}%)</span></label>
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-semibold text-muted uppercase tracking-wider">Signature Width <span class="font-normal">({{ widthPercent }}%)</span></label>
         <input
           type="range"
           [(ngModel)]="widthPercent"
@@ -124,16 +119,14 @@
     </div>
 
     <div class="flex flex-col gap-2">
-      <label class="text-sm font-bold">Signature Position</label>
+      <label class="text-xs font-semibold text-muted uppercase tracking-wider">Signature Position</label>
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
         @for (option of positions; track option.id) {
           <button
             type="button"
             (click)="position = option.id"
-            class="rounded-xl border px-3 py-2 text-xs font-bold transition-colors"
-            [style.backgroundColor]="position === option.id ? 'rgba(79,70,229,0.12)' : 'var(--bg-card)'"
-            [style.borderColor]="position === option.id ? '#4f46e5' : 'var(--border-main)'"
-            [style.color]="position === option.id ? '#4f46e5' : 'var(--text-muted)'"
+            class="rounded-lg border px-3 py-2 text-xs font-semibold transition-colors focus-ring"
+            [ngClass]="position === option.id ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 border-transparent' : 'bg-card text-muted border-main hover:border-zinc-400 dark:hover:border-zinc-600'"
           >
             {{ option.label }}
           </button>
@@ -142,40 +135,41 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="flex flex-col gap-2">
-        <label class="text-sm font-bold">Signature Label</label>
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-semibold text-muted uppercase tracking-wider">Signature Label</label>
         <input
           type="text"
           [(ngModel)]="signatureLabel"
           placeholder="Signed by"
-          class="rounded-xl border px-4 py-3 text-sm themed-input"
+          class="rounded-lg border border-main px-3.5 py-2 text-sm themed-input"
         />
       </div>
 
-      <div class="flex flex-col gap-2">
-        <label class="text-sm font-bold">Date Label</label>
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-semibold text-muted uppercase tracking-wider">Date Label</label>
         <input
           type="text"
           [(ngModel)]="customDate"
           placeholder="Optional date text"
-          class="rounded-xl border px-4 py-3 text-sm themed-input"
+          class="rounded-lg border border-main px-3.5 py-2 text-sm themed-input"
         />
       </div>
     </div>
 
-    <label class="flex items-center gap-3 rounded-2xl border px-4 py-3 border-main bg-card">
+    <label class="flex items-center gap-2.5 rounded-lg border px-3.5 py-2.5 border-main bg-card">
       <input type="checkbox" [(ngModel)]="includeDate" class="h-4 w-4" />
-      <span class="text-sm font-semibold">Add a date line under the signature</span>
+      <span class="text-xs font-semibold text-main">Add a date line under the signature</span>
     </label>
 
-    <div class="flex flex-col gap-2">
-      <label class="text-sm font-bold">Output File Name</label>
+    <div class="flex flex-col gap-1.5">
+      <label class="text-xs font-semibold text-muted uppercase tracking-wider">Output File Name</label>
       <input
         type="text"
         [(ngModel)]="outputFileName"
         placeholder="signed-document.pdf"
-        class="rounded-xl border px-4 py-3 text-sm themed-input"
+        class="rounded-lg border border-main px-3.5 py-2 text-sm themed-input"
       />
     </div>
   </div>
 </app-tool-page>
+

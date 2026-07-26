@@ -6,32 +6,26 @@
 }
 
 .tool-card {
-  --tool-color: var(--color-primary);
-  --tool-color-rgb: 99, 102, 241;
-  min-height: 10.75rem;
+  min-height: 10rem;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 0.95rem;
-  padding: 1rem;
+  gap: 0.85rem;
+  padding: 1.15rem;
   width: 100%;
   text-align: left;
   appearance: none;
   border: 1px solid $border-main;
-  border-left: 4px solid var(--tool-color);
-  border-radius: 8px;
+  border-radius: 0.75rem;
   background: $bg-card;
   color: $text-main;
   box-shadow: $shadow-card;
   cursor: pointer;
-  transition: border-color 0.2s $ease-smooth, box-shadow 0.2s $ease-smooth,
-    transform 0.2s $ease-smooth;
+  transition: border-color 0.15s $ease-smooth, background-color 0.15s $ease-smooth;
 
   &:hover {
-    border-color: color-mix(in srgb, var(--tool-color) 45%, $border-main);
-    box-shadow: $shadow-hover;
-    transform: translateY(-2px);
+    border-color: color-mix(in srgb, $text-main 35%, $border-main);
   }
 }
 
@@ -48,19 +42,20 @@
 }
 
 .tool-icon {
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2.25rem;
+  height: 2.25rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  border-radius: 8px;
-  background: rgba(var(--tool-color-rgb), 0.12);
-  color: var(--tool-color);
+  border-radius: 0.5rem;
+  background: $bg-surface;
+  color: $text-main;
+  border: 1px solid $border-main;
 
   svg {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.15rem;
+    height: 1.15rem;
   }
 }
 
@@ -71,42 +66,58 @@
 }
 
 .tool-badge {
-  min-height: 1.55rem;
+  min-height: 1.35rem;
   display: inline-flex;
   align-items: center;
-  padding: 0.2rem 0.5rem;
-  border-radius: 999px;
-  font-size: 0.65rem;
-  font-weight: 900;
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.375rem;
+  font-size: 0.625rem;
+  font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  border: 1px solid $border-main;
+  background: $bg-surface;
+  color: $text-muted;
 
-  &.local { background: color-mix(in srgb, var(--color-success) 12%, transparent); color: var(--color-success); }
-  &.beta  { background: color-mix(in srgb, var(--color-warning) 14%, transparent); color: var(--color-warning); }
-  &.soon  { background: color-mix(in srgb, var(--color-info)    14%, transparent); color: var(--color-info);    }
+  &.local {
+    background: color-mix(in srgb, var(--color-success) 10%, transparent);
+    color: var(--color-success);
+    border-color: color-mix(in srgb, var(--color-success) 20%, transparent);
+  }
+  &.beta  {
+    background: color-mix(in srgb, var(--color-warning) 10%, transparent);
+    color: var(--color-warning);
+    border-color: color-mix(in srgb, var(--color-warning) 20%, transparent);
+  }
+  &.soon  {
+    background: color-mix(in srgb, var(--color-info) 10%, transparent);
+    color: var(--color-info);
+    border-color: color-mix(in srgb, var(--color-info) 20%, transparent);
+  }
 }
 
 .tool-card-body {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0.35rem;
 }
 
 .tool-title {
   color: $text-main;
-  font-size: 1rem;
-  font-weight: 900;
-  line-height: 1.2;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 .tool-description {
   color: $text-muted;
   display: -webkit-box;
   overflow: hidden;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  font-size: 0.82rem;
-  font-weight: 550;
-  line-height: 1.55;
+  font-size: 0.8rem;
+  font-weight: 450;
+  line-height: 1.5;
 }
+

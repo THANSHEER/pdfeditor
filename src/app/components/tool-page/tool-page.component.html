@@ -2,14 +2,14 @@
 
   <!-- Page Header -->
   <div class="tool-header animate-fade-up">
-    <a routerLink="/tools" class="back-btn">
+    <a routerLink="/tools" class="back-btn focus-ring">
       <svg class="back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="15 18 9 12 15 6"></polyline>
       </svg>
       All Tools
     </a>
     <div class="tool-meta">
-      <div class="tool-icon-box" [style.background]="iconBg" [style.color]="iconColor">
+      <div class="tool-icon-box">
         <svg class="tool-hero-icon" [attr.viewBox]="getIconData(icon).viewBox" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" [innerHTML]="getIconData(icon).path | safeHtml"></svg>
       </div>
       <div>
@@ -49,7 +49,7 @@
       <div class="file-list" (click)="$event.stopPropagation()">
         <div class="file-list-header">
           <span class="file-count">{{ selectedFiles.length }} file{{ selectedFiles.length !== 1 ? 's' : '' }} selected</span>
-          <button class="add-more-btn" (click)="fileInput.click()">+ Add more</button>
+          <button class="add-more-btn focus-ring" (click)="fileInput.click()">+ Add more</button>
         </div>
         @for (f of selectedFiles; track f; let i = $index) {
           <div class="file-item">
@@ -94,7 +94,7 @@
   <!-- Process Button -->
   @if (selectedFiles.length > 0) {
     <div class="action-row animate-fade-up">
-      <button class="process-btn" [disabled]="isProcessing" (click)="onProcess()">
+      <button class="process-btn focus-ring" [disabled]="isProcessing" (click)="onProcess()">
         @if (!isProcessing) {
           <span>
             <svg class="btn-icon" [attr.viewBox]="getIconData(actionIcon).viewBox" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" [innerHTML]="getIconData(actionIcon).path | safeHtml"></svg>
@@ -139,7 +139,7 @@
         @for (df of downloadFiles; track df) {
           <div class="download-item">
             <span class="dl-name">{{ df.name }}</span>
-            <button class="dl-btn" (click)="$event.stopPropagation(); download(df)">
+            <button class="dl-btn focus-ring" (click)="$event.stopPropagation(); download(df)">
               <svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" />
               </svg>
@@ -150,7 +150,7 @@
       </div>
       <div class="dl-actions">
         @if (downloadFiles.length > 1) {
-          <button class="dl-zip-btn" (click)="downloadAsZip()" [disabled]="isZipping">
+          <button class="dl-zip-btn focus-ring" (click)="downloadAsZip()" [disabled]="isZipping">
             @if (!isZipping) {
               <svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/>
@@ -165,7 +165,7 @@
           </button>
         }
         @if (downloadFiles.length > 1) {
-          <button class="dl-all-btn" (click)="downloadAll()">
+          <button class="dl-all-btn focus-ring" (click)="downloadAll()">
             <svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" />
             </svg>
@@ -177,3 +177,4 @@
   }
 
 </div>
+

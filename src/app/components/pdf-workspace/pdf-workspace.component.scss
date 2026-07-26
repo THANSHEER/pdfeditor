@@ -12,8 +12,8 @@
 }
 
 .icon {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.1rem;
+  height: 1.1rem;
   flex-shrink: 0;
 }
 
@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 56px;
+  height: 52px;
   padding: 0 16px;
   background-color: $bg-card;
   border-bottom: 1px solid $border-main;
@@ -52,17 +52,19 @@
   color: $text-muted;
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.2s $ease-smooth;
+  border: 1px solid $border-main;
+  background-color: $bg-surface;
+  transition: border-color 0.15s $ease-smooth;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    border-color: color-mix(in srgb, $text-main 30%, $border-main);
     color: $text-main;
   }
 }
 
 .divider {
   width: 1px;
-  height: 24px;
+  height: 20px;
   background-color: $border-main;
 }
 
@@ -71,50 +73,50 @@
   align-items: center;
   gap: 8px;
   color: $text-main;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 .view-toggle {
   display: flex;
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: $bg-surface;
   border-radius: 6px;
-  padding: 4px;
+  padding: 3px;
   border: 1px solid $border-main;
 
   button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 28px;
+    width: 32px;
+    height: 26px;
     background: transparent;
     border: none;
     border-radius: 4px;
     color: $text-muted;
     cursor: pointer;
-    transition: all 0.2s $ease-smooth;
+    transition: background-color 0.15s $ease-smooth, color 0.15s $ease-smooth;
 
     &:hover { color: $text-main; }
-    &.active { background-color: rgba(255, 255, 255, 0.1); color: $text-main; }
+    &.active { background-color: $bg-card; color: $text-main; font-weight: 600; }
   }
 }
 
 .export-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background-color: $primary;
-  color: white;
-  border: none;
+  gap: 6px;
+  background-color: var(--color-primary);
+  color: var(--bg-main);
+  border: 1px solid $border-main;
   border-radius: 6px;
-  padding: 8px 16px;
-  font-size: 0.875rem;
+  padding: 6px 14px;
+  font-size: 0.8125rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s $ease-smooth;
+  transition: opacity 0.15s $ease-smooth;
 
-  &:hover:not(:disabled) { background-color: $primary-hover; }
+  &:hover:not(:disabled) { opacity: 0.9; }
   &:disabled { opacity: 0.5; cursor: not-allowed; }
 }
 
@@ -129,7 +131,7 @@
 .sidebar-left,
 .sidebar-right {
   background-color: $bg-card;
-  width: 240px;
+  width: 220px;
   flex-shrink: 0;
   overflow-y: auto;
   border-right: 1px solid $border-main;
@@ -144,25 +146,25 @@
 .tool-nav {
   display: flex;
   flex-direction: column;
-  padding: 12px;
+  padding: 10px;
   gap: 4px;
 }
 
 .tool-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
+  gap: 10px;
+  padding: 8px 10px;
   border-radius: 6px;
   color: $text-muted;
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   cursor: pointer;
-  transition: all 0.2s $ease-smooth;
+  transition: background-color 0.15s $ease-smooth, color 0.15s $ease-smooth;
 
-  &:hover { background-color: rgba(255, 255, 255, 0.03); color: $text-main; }
-  &.active { background-color: rgba(139, 92, 246, 0.1); color: #a78bfa; }
+  &:hover { background-color: $bg-surface; color: $text-main; }
+  &.active { background-color: $bg-surface; color: $text-main; font-weight: 700; border: 1px solid $border-main; }
 }
 
 // ─── Canvas area ──────────────────────────────────────────────────────────────
@@ -177,7 +179,7 @@
 
 .view-container {
   flex: 1;
-  padding: 24px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -187,7 +189,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
   overflow-y: auto;
   padding-right: 12px;
 }
@@ -198,10 +200,9 @@
   align-items: center;
   gap: 8px;
   background-color: $bg-card;
-  padding: 16px;
+  padding: 14px;
   border-radius: 8px;
   border: 1px solid $border-main;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .scrolling-page-img {
@@ -212,7 +213,7 @@
 }
 
 .scrolling-page-label {
-  font-size: 0.85rem;
+  font-size: 0.8125rem;
   color: $text-muted;
   font-weight: 500;
 }
@@ -221,29 +222,30 @@
 .upload-zone {
   margin: auto;
   width: 100%;
-  max-width: 500px;
+  max-width: 480px;
   border: 2px dashed $border-main;
-  border-radius: 16px;
-  padding: 48px 24px;
+  border-radius: 12px;
+  padding: 40px 24px;
   text-align: center;
   cursor: pointer;
-  transition: all 0.2s $ease-smooth;
-  background-color: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.15s $ease-smooth, background-color 0.15s $ease-smooth;
+  background-color: $bg-card;
 
   &:hover,
   &.drag-over {
-    border-color: $primary;
-    background-color: rgba(99, 102, 241, 0.05);
+    border-color: color-mix(in srgb, $text-main 40%, $border-main);
+    background-color: $bg-surface;
   }
 }
 
 .hidden-input { display: none; }
 
 .upload-icon-ring {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.05);
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  background-color: $bg-surface;
+  border: 1px solid $border-main;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -251,18 +253,18 @@
   color: $text-main;
 }
 
-.upload-icon  { width: 2rem;   height: 2rem;   }
-.loader-icon  { width: 2.5rem; height: 2.5rem; }
+.upload-icon  { width: 1.5rem; height: 1.5rem; }
+.loader-icon  { width: 2rem;   height: 2rem;   }
 
 .upload-title {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: $text-main;
 }
 
 .upload-hint {
-  font-size: 0.85rem;
+  font-size: 0.8125rem;
   color: $text-muted;
 }
 
@@ -280,17 +282,18 @@
 // ─── Context panel ────────────────────────────────────────────────────────────
 .context-panel {
   .panel-title {
-    font-size: 0.85rem;
+    font-size: 0.8125rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     color: $text-muted;
-    margin-bottom: 12px;
-    font-weight: 600;
+    margin-bottom: 10px;
+    font-weight: 700;
   }
 
   .panel-desc {
-    font-size: 0.85rem;
+    font-size: 0.8125rem;
     color: $text-muted;
     line-height: 1.5;
   }
 }
+
