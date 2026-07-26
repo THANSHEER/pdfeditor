@@ -2,29 +2,14 @@
 
 :host { display: block; }
 
-// Crop preview overlay (amber mask showing areas to be removed)
+// Crop preview overlay (mask showing areas to be removed)
 .crop-overlay {
-  background: rgba(245, 158, 11, 0.42);
+  background: rgba(24, 24, 27, 0.4);
   transition: all 0.15s $ease-smooth;
 
-  &--top    { border-top:    2px dashed rgba(245, 158, 11, 0.9); }
-  &--bottom { border-bottom: 2px dashed rgba(245, 158, 11, 0.9); }
-  &--left   { border-left:   2px dashed rgba(245, 158, 11, 0.9); }
-  &--right  { border-right:  2px dashed rgba(245, 158, 11, 0.9); }
+  &--top    { border-top:    1px dashed var(--border-main); }
+  &--bottom { border-bottom: 1px dashed var(--border-main); }
+  &--left   { border-left:   1px dashed var(--border-main); }
+  &--right  { border-right:  1px dashed var(--border-main); }
 }
 
-// Indigo badge used in UI hints
-.indigo-badge {
-  background-color: rgba(99, 102, 241, 0.08);
-  color: $primary;
-  border-radius: 0.5rem;
-  padding: 0.25rem 0.625rem;
-}
-
-// Warning badge
-.warning-badge {
-  background-color: rgba(245, 158, 11, 0.15);
-  color: #f59e0b;
-  border-radius: 0.5rem;
-  padding: 0.25rem 0.625rem;
-}

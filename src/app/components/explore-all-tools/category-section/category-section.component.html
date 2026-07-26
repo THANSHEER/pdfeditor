@@ -2,13 +2,9 @@
   <section [id]="category.id" class="category-section surface-panel">
     <div class="category-header">
       <div class="category-title-row">
-        <div
-          class="category-icon"
-          [style.backgroundColor]="iconBg"
-          [style.color]="iconColor"
-        >
+        <div class="category-icon">
           <svg
-            class="w-5 h-5 sm:w-6 sm:h-6"
+            class="w-4 h-4 sm:w-5 sm:h-5"
             [attr.viewBox]="getIconData(category.icon).viewBox"
             fill="none"
             stroke="currentColor"
@@ -27,9 +23,8 @@
     </div>
 
     <div class="tools-grid">
-      @for (tool of tools; track tool.id; let i = $index) {
+      @for (tool of tools; track tool.id) {
         <app-tool-card
-          [style.animation-delay]="i * 40 + 'ms'"
           [title]="tool.name"
           [description]="tool.description"
           [icon]="tool.icon"
@@ -42,3 +37,4 @@
     </div>
   </section>
 }
+

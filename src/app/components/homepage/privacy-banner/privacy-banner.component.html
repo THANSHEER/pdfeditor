@@ -1,11 +1,11 @@
 <div class="w-full">
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
     @for (pillar of pillars; track pillar) {
-      <div class="pillar-card bg-card border border-main rounded-2xl p-5 sm:p-6 transition-colors duration-200">
+      <div class="bg-card border border-main rounded-xl p-5 transition-colors duration-150 hover:border-zinc-400 dark:hover:border-zinc-600">
         <div class="flex justify-between items-start mb-4">
-          <div class="flex items-center justify-center w-11 h-11 rounded-xl" [ngClass]="pillar.iconBg">
+          <div class="flex items-center justify-center w-9 h-9 rounded-lg bg-surface text-main border border-main">
             <svg
-              [attr.class]="'w-5 h-5 ' + pillar.iconColor"
+              class="w-4.5 h-4.5 text-main"
               [attr.viewBox]="getIconData(pillar.icon).viewBox"
               fill="none"
               stroke="currentColor"
@@ -15,13 +15,14 @@
               [innerHTML]="getIconData(pillar.icon).path | safeHtml"
             ></svg>
           </div>
-          <span class="text-xs font-bold px-2.5 py-1 rounded-md" [ngClass]="pillar.accentBadge">
+          <span class="text-[11px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-md bg-surface text-muted border border-main">
             {{ pillar.badge }}
           </span>
         </div>
-        <h3 class="text-base font-bold text-main mb-2">{{ pillar.title }}</h3>
-        <p class="text-sm text-muted leading-relaxed">{{ pillar.description }}</p>
+        <h3 class="text-base font-bold text-main mb-1.5">{{ pillar.title }}</h3>
+        <p class="text-xs text-muted leading-relaxed font-normal">{{ pillar.description }}</p>
       </div>
     }
   </div>
 </div>
+
